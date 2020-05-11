@@ -1,5 +1,6 @@
 var urlProjects = "http://localhost:8084/projects";
 var urlRecommendations = "http://localhost:8084/recommendations";
+
 function getProjects() {
     fetch(urlProjects)
         .then(function(data) {

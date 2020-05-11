@@ -1,5 +1,4 @@
 var recommendations = [];
-
 window.onload = function (ev) {
     var projectData = document.getElementById("projects");
     fetch(urlProjects).then(function(response) {
