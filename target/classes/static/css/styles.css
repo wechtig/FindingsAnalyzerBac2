@@ -1,0 +1,26 @@
+.topPage {
+    padding-top: 0px;
+    background-color: #2C81A3;
+    margin-top: 0px;
+}
+
+body {
+    margin-top: 0px;
+}
+
+.findings {
+    margin-top: 5px;
+}
+
+.chartTitle {
+    margin-top: 70px;
+}
+
+.title {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.ui-slider-range {
+    background: rgb(255, 130, 37);
+}
