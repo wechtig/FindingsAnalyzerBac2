@@ -2,58 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2f970b6-24f2-4513-a129-40b742fdb637" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/CustomizeAuthenticationSuccessHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/PageConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/UserSecurityService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/default.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/findingsDashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/converter/DBObjectConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/converter/DBObjectConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Finding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/Finding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProjectConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/ProjectConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Recommendation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/Recommendation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/RoleEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/RoleEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ToolEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/ConfigurationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/ConfigurationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/FindingsAnalyzerBac2Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/FindingsAnalyzerBac2Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/FindingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/FindingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ConfigurationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/ConfigurationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/FindingsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/IgnoreMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/IgnoreMessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/PdfExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/PdfExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/RecommendationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/RecommendationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/configuration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/configurations.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/reports.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/converter/DBObjectConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Finding.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Recommendation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/ToolEnum.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/findingsAnalyzer/FindingsAnalyzerBac2Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/findingsAnalyzer/FindingsAnalyzerBac2Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/findingsAnalyzer/FindingsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/FindingsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/IgnoreMessageService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/PdfExporter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/RecommendationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/package/dist/Chart.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/package/dist/Chart.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/package/dist/Chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/package/dist/Chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/request.js" afterDir="false" />
@@ -118,12 +68,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="77" selection-start-line="23" selection-start-column="77" selection-end-line="23" selection-end-column="77" />
+            <state relative-caret-position="374">
+              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -448,7 +397,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590322670792" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590322719869" />
     <property name="last_opened_file_path" value="H:/tutorialspringsec/tutorialspringsec" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -514,7 +463,7 @@
       <option name="presentableId" value="Default" />
       <updated>1589181203957</updated>
       <workItem from="1589181209278" duration="10081000" />
-      <workItem from="1590306367581" duration="12050000" />
+      <workItem from="1590306367581" duration="12402000" />
     </task>
     <task id="LOCAL-00001" summary="add configurations service and html">
       <created>1589196595228</created>
@@ -530,18 +479,24 @@
       <option name="project" value="LOCAL" />
       <updated>1589196611172</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add user management">
+      <created>1590322922547</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590322922547</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22131000" />
+    <option name="totallyTimeSpent" value="22483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.25" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.50080776" side_tool="true" visible="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -550,7 +505,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49307036" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49307036" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -559,11 +514,11 @@
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49626866" weight="0.32936078" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="CheckStyle" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50692964" side_tool="true" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50319827" side_tool="true" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.49733475" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.4968017" visible="true" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -583,7 +538,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add configurations service and html" />
     <MESSAGE value="add conf js" />
-    <option name="LAST_COMMIT_MESSAGE" value="add conf js" />
+    <MESSAGE value="add user management" />
+    <option name="LAST_COMMIT_MESSAGE" value="add user management" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/FindingsController.java" />
@@ -907,12 +863,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="77" selection-start-line="23" selection-start-column="77" selection-end-line="23" selection-end-column="77" />
+        <state relative-caret-position="374">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding>
             <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
