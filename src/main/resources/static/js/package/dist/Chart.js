@@ -3385,7 +3385,7 @@ var exports$3 = core_element.extend({
 	currentStep: 0, // the current animation step
 	numSteps: 60, // default number of steps
 	easing: '', // the easing to use for this animation
-	render: null, // render function used by the animation service
+	render: null, // render function used by the animation findingsAnalyzer.service
 
 	onAnimationProgress: null, // user specified callback to fire on each step of the animation
 	onAnimationComplete: null, // user specified callback to fire when the animation finishes
@@ -3626,14 +3626,14 @@ helpers$1.extend(DatasetController.prototype, {
 	datasetElementType: null,
 
 	/**
-	 * Element type used to generate a meta data (e.g. Chart.element.Point).
+	 * Element type used to generate a meta findingsAnalyzer.data (e.g. Chart.element.Point).
 	 * @type {Chart.core.element}
 	 */
 	dataElementType: null,
 
 	/**
 	 * Dataset element option keys to be resolved in _resolveDatasetElementOptions.
-	 * A derived controller may override this to resolve controller-specific options.
+	 * A derived findingsAnalyzer.controller may override this to resolve findingsAnalyzer.controller-specific options.
 	 * The keys defined here are for backward compatibility for legend styles.
 	 * @private
 	 */
@@ -3649,7 +3649,7 @@ helpers$1.extend(DatasetController.prototype, {
 
 	/**
 	 * Data element option keys to be resolved in _resolveDataElementOptions.
-	 * A derived controller may override this to resolve controller-specific options.
+	 * A derived findingsAnalyzer.controller may override this to resolve findingsAnalyzer.controller-specific options.
 	 * The keys defined here are for backward compatibility for legend styles.
 	 * @private
 	 */
@@ -3786,12 +3786,12 @@ helpers$1.extend(DatasetController.prototype, {
 		var dataset = me.getDataset();
 		var data = dataset.data || (dataset.data = []);
 
-		// In order to correctly handle data addition/deletion animation (an thus simulate
-		// real-time charts), we need to monitor these data modifications and synchronize
-		// the internal meta data accordingly.
+		// In order to correctly handle findingsAnalyzer.data addition/deletion animation (an thus simulate
+		// real-time charts), we need to monitor these findingsAnalyzer.data modifications and synchronize
+		// the internal meta findingsAnalyzer.data accordingly.
 		if (me._data !== data) {
 			if (me._data) {
-				// This case happens when the user replaced the data array instance.
+				// This case happens when the user replaced the findingsAnalyzer.data array instance.
 				unlistenArrayEvents(me._data, me);
 			}
 
@@ -3801,7 +3801,7 @@ helpers$1.extend(DatasetController.prototype, {
 			me._data = data;
 		}
 
-		// Re-sync meta data in case the user replaced the data array or if we missed
+		// Re-sync meta findingsAnalyzer.data in case the user replaced the findingsAnalyzer.data array or if we missed
 		// any updates and so make sure that we handle number of datapoints changing.
 		me.resyncElements();
 	},
@@ -3865,8 +3865,8 @@ helpers$1.extend(DatasetController.prototype, {
 
 	/**
 	 * Returns a set of predefined style properties that should be used to represent the dataset
-	 * or the data if the index is specified
-	 * @param {number} index - data index
+	 * or the findingsAnalyzer.data if the index is specified
+	 * @param {number} index - findingsAnalyzer.data index
 	 * @return {IStyleInterface} style object
 	 */
 	getStyle: function(index) {
@@ -4815,7 +4815,7 @@ function computeFitCategoryTraits(index, ruler, options) {
 /**
  * Computes an "optimal" category that globally arranges bars side by side (no gap when
  * percentage options are 1), based on the previous and following categories. This mode
- * generates bars with different widths when data are not evenly spaced.
+ * generates bars with different widths when findingsAnalyzer.data are not evenly spaced.
  * @private
  */
 function computeFlexCategoryTraits(index, ruler, options) {
@@ -4827,13 +4827,13 @@ function computeFlexCategoryTraits(index, ruler, options) {
 	var start, size;
 
 	if (prev === null) {
-		// first data: its size is double based on the next point or,
-		// if it's also the last data, we use the scale size.
+		// first findingsAnalyzer.data: its size is double based on the next point or,
+		// if it's also the last findingsAnalyzer.data, we use the scale size.
 		prev = curr - (next === null ? ruler.end - ruler.start : next - curr);
 	}
 
 	if (next === null) {
-		// last data: its size is also double based on the previous point.
+		// last findingsAnalyzer.data: its size is also double based on the previous point.
 		next = curr + curr - prev;
 	}
 
@@ -5175,7 +5175,7 @@ core_defaults._set('bubble', {
 	tooltips: {
 		callbacks: {
 			title: function() {
-				// Title doesn't make sense for scatter since we format the data as a point
+				// Title doesn't make sense for scatter since we format the findingsAnalyzer.data as a point
 				return '';
 			},
 			label: function(item, data) {
@@ -5370,7 +5370,7 @@ core_defaults._set('doughnut', {
 							lineWidth: style.borderWidth,
 							hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
 
-							// Extra data used for toggling the correct item
+							// Extra findingsAnalyzer.data used for toggling the correct item
 							index: i
 						};
 					});
@@ -5399,7 +5399,7 @@ core_defaults._set('doughnut', {
 	// The percentage of the chart that we cut out of the middle.
 	cutoutPercentage: 50,
 
-	// The rotation of the chart, where the first data arc begins.
+	// The rotation of the chart, where the first findingsAnalyzer.data arc begins.
 	rotation: -HALF_PI$1,
 
 	// The total circumference of the chart.
@@ -5693,7 +5693,7 @@ var controller_doughnut = core_datasetController.extend({
 	},
 
 	/**
-	 * Returns the sum of all visibile data set weights.  This value can be 0.
+	 * Returns the sum of all visibile findingsAnalyzer.data set weights.  This value can be 0.
 	 * @private
 	 */
 	_getVisibleDatasetWeightTotal: function() {
@@ -6188,7 +6188,7 @@ core_defaults._set('polarArea', {
 							lineWidth: style.borderWidth,
 							hidden: isNaN(data.datasets[0].data[i]) || meta.data[i].hidden,
 
-							// Extra data used for toggling the correct item
+							// Extra findingsAnalyzer.data used for toggling the correct item
 							index: i
 						};
 					});
@@ -6650,7 +6650,7 @@ core_defaults._set('scatter', {
 	tooltips: {
 		callbacks: {
 			title: function() {
-				return '';     // doesn't make sense for scatter since data are formatted as a point
+				return '';     // doesn't make sense for scatter since findingsAnalyzer.data are formatted as a point
 			},
 			label: function(item) {
 				return '(' + item.xLabel + ', ' + item.yLabel + ')';
@@ -6670,9 +6670,9 @@ core_defaults._set('global', {
 // Scatter charts use line controllers
 var controller_scatter = controller_line;
 
-// NOTE export a map in which the key represents the controller type, not
+// NOTE export a map in which the key represents the findingsAnalyzer.controller type, not
 // the class, and so must be CamelCase in order to be correctly retrieved
-// by the controller in core.controller.js (`controllers[meta.type]`).
+// by the findingsAnalyzer.controller in core.findingsAnalyzer.controller.js (`controllers[meta.type]`).
 
 var controllers = {
 	bar: controller_bar,
@@ -6803,7 +6803,7 @@ function indexMode(chart, e, options) {
 	chart._getSortedVisibleDatasetMetas().forEach(function(meta) {
 		var element = meta.data[items[0]._index];
 
-		// don't count items that are skipped (null data)
+		// don't count items that are skipped (null findingsAnalyzer.data)
 		if (element && !element._view.skip) {
 			elements.push(element);
 		}
@@ -7203,9 +7203,9 @@ core_defaults._set('global', {
  * @prop {number} bottom - Bottom edge of the item. Set by layout system and cannot be used in update
  */
 
-// The layout service is very self explanatory.  It's responsible for the layout within a chart.
-// Scales, Legends and Plugins all rely on the layout service and can easily register to be placed anywhere they need
-// It is this service's responsibility of carrying out that layout.
+// The layout findingsAnalyzer.service is very self explanatory.  It's responsible for the layout within a chart.
+// Scales, Legends and Plugins all rely on the layout findingsAnalyzer.service and can easily register to be placed anywhere they need
+// It is this findingsAnalyzer.service's responsibility of carrying out that layout.
 var core_layouts = {
 	defaults: {},
 
@@ -7436,7 +7436,7 @@ function readUsedSize(element, property) {
 
 /**
  * Initializes the canvas style and render size without modifying the canvas display size,
- * since responsiveness is handled by the controller.resize() method. The config is used
+ * since responsiveness is handled by the findingsAnalyzer.controller.resize() method. The findingsAnalyzer.config is used
  * to determine the aspect ratio to apply in case no explicit height has been specified.
  */
 function initCanvas(canvas, config) {
@@ -7914,7 +7914,7 @@ core_defaults._set('global', {
 });
 
 /**
- * The plugin service singleton
+ * The plugin findingsAnalyzer.service singleton
  * @namespace Chart.plugins
  * @since 2.1.0
  */
@@ -8083,7 +8083,7 @@ var core_scaleService = {
 	// Use a registration function so that we can move to an ES6 map when we no longer need to support
 	// old browsers
 
-	// Scale config defaults
+	// Scale findingsAnalyzer.config defaults
 	defaults: {},
 	registerScaleType: function(type, scaleConstructor, scaleDefaults) {
 		this.constructors[type] = scaleConstructor;
@@ -8148,7 +8148,7 @@ core_defaults._set('global', {
 		borderColor: 'rgba(0,0,0,0)',
 		borderWidth: 0,
 		callbacks: {
-			// Args are: (tooltipItems, data)
+			// Args are: (tooltipItems, findingsAnalyzer.data)
 			beforeTitle: helpers$1.noop,
 			title: function(tooltipItems, data) {
 				var title = '';
@@ -8170,10 +8170,10 @@ core_defaults._set('global', {
 			},
 			afterTitle: helpers$1.noop,
 
-			// Args are: (tooltipItems, data)
+			// Args are: (tooltipItems, findingsAnalyzer.data)
 			beforeBody: helpers$1.noop,
 
-			// Args are: (tooltipItem, data)
+			// Args are: (tooltipItem, findingsAnalyzer.data)
 			beforeLabel: helpers$1.noop,
 			label: function(tooltipItem, data) {
 				var label = data.datasets[tooltipItem.datasetIndex].label || '';
@@ -8202,10 +8202,10 @@ core_defaults._set('global', {
 			},
 			afterLabel: helpers$1.noop,
 
-			// Args are: (tooltipItems, data)
+			// Args are: (tooltipItems, findingsAnalyzer.data)
 			afterBody: helpers$1.noop,
 
-			// Args are: (tooltipItems, data)
+			// Args are: (tooltipItems, findingsAnalyzer.data)
 			beforeFooter: helpers$1.noop,
 			footer: helpers$1.noop,
 			afterFooter: helpers$1.noop
@@ -8612,7 +8612,7 @@ var exports$4 = core_element.extend({
 	},
 
 	// Get the title
-	// Args are: (tooltipItem, data)
+	// Args are: (tooltipItem, findingsAnalyzer.data)
 	getTitle: function() {
 		var me = this;
 		var opts = me._options;
@@ -8630,12 +8630,12 @@ var exports$4 = core_element.extend({
 		return lines;
 	},
 
-	// Args are: (tooltipItem, data)
+	// Args are: (tooltipItem, findingsAnalyzer.data)
 	getBeforeBody: function() {
 		return getBeforeAfterBodyLines(this._options.callbacks.beforeBody.apply(this, arguments));
 	},
 
-	// Args are: (tooltipItem, data)
+	// Args are: (tooltipItem, findingsAnalyzer.data)
 	getBody: function(tooltipItems, data) {
 		var me = this;
 		var callbacks = me._options.callbacks;
@@ -8657,13 +8657,13 @@ var exports$4 = core_element.extend({
 		return bodyItems;
 	},
 
-	// Args are: (tooltipItem, data)
+	// Args are: (tooltipItem, findingsAnalyzer.data)
 	getAfterBody: function() {
 		return getBeforeAfterBodyLines(this._options.callbacks.afterBody.apply(this, arguments));
 	},
 
 	// Get the footer and beforeFooter and afterFooter lines
-	// Args are: (tooltipItem, data)
+	// Args are: (tooltipItem, findingsAnalyzer.data)
 	getFooter: function() {
 		var me = this;
 		var callbacks = me._options.callbacks;
@@ -8760,7 +8760,7 @@ var exports$4 = core_element.extend({
 			model.labelColors = labelColors;
 			model.labelTextColors = labelTextColors;
 
-			// data points
+			// findingsAnalyzer.data points
 			model.dataPoints = tooltipItems;
 
 			// We need to determine alignment of the tooltip
@@ -9164,11 +9164,11 @@ core_defaults._set('global', {
 });
 
 /**
- * Recursively merge the given config objects representing the `scales` option
+ * Recursively merge the given findingsAnalyzer.config objects representing the `scales` option
  * by incorporating scale defaults in `xAxes` and `yAxes` array items, then
  * returns a deep copy of the result, thus doesn't alter inputs.
  */
-function mergeScaleConfig(/* config objects ... */) {
+function mergeScaleConfig(/* findingsAnalyzer.config objects ... */) {
 	return helpers$1.merge({}, [].slice.call(arguments), {
 		merger: function(key, target, source, options) {
 			if (key === 'xAxes' || key === 'yAxes') {
@@ -9204,18 +9204,18 @@ function mergeScaleConfig(/* config objects ... */) {
 }
 
 /**
- * Recursively merge the given config objects as the root options by handling
+ * Recursively merge the given findingsAnalyzer.config objects as the root options by handling
  * default scale options for the `scales` and `scale` properties, then returns
  * a deep copy of the result, thus doesn't alter inputs.
  */
-function mergeConfig(/* config objects ... */) {
+function mergeConfig(/* findingsAnalyzer.config objects ... */) {
 	return helpers$1.merge({}, [].slice.call(arguments), {
 		merger: function(key, target, source, options) {
 			var tval = target[key] || {};
 			var sval = source[key];
 
 			if (key === 'scales') {
-				// scale config merging is complex. Add our own function here for that
+				// scale findingsAnalyzer.config merging is complex. Add our own function here for that
 				target[key] = mergeScaleConfig(tval, sval);
 			} else if (key === 'scale') {
 				// used in polar area & radar charts since there is only one scale
@@ -9230,8 +9230,8 @@ function mergeConfig(/* config objects ... */) {
 function initConfig(config) {
 	config = config || {};
 
-	// Do NOT use mergeConfig for the data object because this method merges arrays
-	// and so would change references to labels and datasets, preventing data updates.
+	// Do NOT use mergeConfig for the findingsAnalyzer.data object because this method merges arrays
+	// and so would change references to labels and datasets, preventing findingsAnalyzer.data updates.
 	var data = config.data = config.data || {};
 	data.datasets = data.datasets || [];
 	data.labels = data.labels || [];
@@ -9329,13 +9329,13 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		 * @private
 		 */
 		me.chart = me;
-		me.controller = me; // chart.chart.controller #inception
+		me.controller = me; // chart.chart.findingsAnalyzer.controller #inception
 
 		// Add the chart instance to the global namespace
 		Chart.instances[me.id] = me;
 
-		// Define alias to the config data: `chart.data === chart.config.data`
-		Object.defineProperty(me, 'data', {
+		// Define alias to the findingsAnalyzer.config findingsAnalyzer.data: `chart.findingsAnalyzer.data === chart.findingsAnalyzer.config.findingsAnalyzer.data`
+		Object.defineProperty(me, 'findingsAnalyzer.data', {
 			get: function() {
 				return me.config.data;
 			},
@@ -9346,7 +9346,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 
 		if (!context || !canvas) {
 			// The given item is not a compatible context2d element, let's return before finalizing
-			// the chart initialization but after setting basic chart / controller properties that
+			// the chart initialization but after setting basic chart / findingsAnalyzer.controller properties that
 			// can help to figure out that the chart is not valid (e.g chart.canvas !== null);
 			// https://github.com/chartjs/Chart.js/issues/2807
 			console.error("Failed to create chart: can't acquire context from the given item");
@@ -9619,13 +9619,13 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 			return;
 		}
 
-		// In case the entire data object changed
+		// In case the entire findingsAnalyzer.data object changed
 		me.tooltip._data = me.data;
 
 		// Make sure dataset controllers are updated and new controllers are reset
 		var newControllers = me.buildOrUpdateControllers();
 
-		// Make sure all dataset controllers have correct meta data counts
+		// Make sure all dataset controllers have correct meta findingsAnalyzer.data counts
 		for (i = 0, ilen = me.data.datasets.length; i < ilen; i++) {
 			me.getDatasetMeta(i).controller.buildOrUpdateElements();
 		}
@@ -10041,7 +10041,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 
 		me.stop();
 
-		// dataset controllers need to cleanup associated data
+		// dataset controllers need to cleanup associated findingsAnalyzer.data
 		for (i = 0, ilen = me.data.datasets.length; i < ilen; ++i) {
 			me.destroyDatasetMeta(i);
 		}
@@ -10483,7 +10483,7 @@ var core_helpers = function() {
 	helpers$1.EPSILON = Number.EPSILON || 1e-14;
 	helpers$1.splineCurveMonotone = function(points) {
 		// This function calculates Bézier control points in a similar way than |splineCurve|,
-		// but preserves monotonicity of the provided data and ensures no local extremums are added
+		// but preserves monotonicity of the provided findingsAnalyzer.data and ensures no local extremums are added
 		// between the dataset discrete points due to the interpolation.
 		// See : https://en.wikipedia.org/wiki/Monotone_cubic_interpolation
 
@@ -10931,8 +10931,8 @@ helpers$1.extend(DateAdapter.prototype, /** @lends DateAdapter */ {
 
 	/**
 	 * Parses the given `value` and return the associated timestamp.
-	 * @param {any} value - the value to parse (usually comes from the data)
-	 * @param {string} [format] - the expected data format
+	 * @param {any} value - the value to parse (usually comes from the findingsAnalyzer.data)
+	 * @param {string} [format] - the expected findingsAnalyzer.data format
 	 * @returns {(number|null)}
 	 * @function
 	 */
@@ -11536,7 +11536,7 @@ var Scale = core_element.extend({
 		samplingEnabled = sampleSize < ticks.length;
 		labels = me._convertTicksToLabels(samplingEnabled ? sample(ticks, sampleSize) : ticks);
 
-		// _configure is called twice, once here, once from core.controller.updateLayout.
+		// _configure is called twice, once here, once from core.findingsAnalyzer.controller.updateLayout.
 		// Here we haven't been positioned yet, but dimensions are correct.
 		// Variables set in _configure are needed for calculateTickRotation, and
 		// it's ok that coordinates are not correct there, only dimensions matter.
@@ -11955,14 +11955,14 @@ var Scale = core_element.extend({
 	},
 
 	/**
-	 * Used to get the value to display in the tooltip for the data at the given index
+	 * Used to get the value to display in the tooltip for the findingsAnalyzer.data at the given index
 	 * @param index
 	 * @param datasetIndex
 	 */
 	getLabelForIndex: helpers$1.noop,
 
 	/**
-	 * Returns the location of the given data point. Value can either be an index or a numerical value
+	 * Returns the location of the given findingsAnalyzer.data point. Value can either be an index or a numerical value
 	 * The coordinate (0, 0) is at the upper-left corner of the canvas
 	 * @param value
 	 * @param index
@@ -11971,7 +11971,7 @@ var Scale = core_element.extend({
 	getPixelForValue: helpers$1.noop,
 
 	/**
-	 * Used to get the data value from a given pixel. This is the inverse of getPixelForValue
+	 * Used to get the findingsAnalyzer.data value from a given pixel. This is the inverse of getPixelForValue
 	 * The coordinate (0, 0) is at the upper-left corner of the canvas
 	 * @param pixel
 	 */
@@ -12601,7 +12601,7 @@ var scale_category = core_scale.extend({
 		me._valueRange = Math.max(ticks.length - (offset ? 0 : 1), 1);
 	},
 
-	// Used to get data value locations.  Value can either be an index or a numerical value
+	// Used to get findingsAnalyzer.data value locations.  Value can either be an index or a numerical value
 	getPixelForValue: function(value, index, datasetIndex) {
 		var me = this;
 		var valueCategory, labels, idx;
@@ -12610,7 +12610,7 @@ var scale_category = core_scale.extend({
 			value = me.chart.data.datasets[datasetIndex].data[index];
 		}
 
-		// If value is a data object, then index is the index in the data array,
+		// If value is a findingsAnalyzer.data object, then index is the index in the findingsAnalyzer.data array,
 		// not the index of the scale. We need to change that.
 		if (!isNullOrUndef$1(value)) {
 			valueCategory = me.isHorizontal() ? value.x : value.y;
@@ -12655,7 +12655,7 @@ var isNullOrUndef$2 = helpers$1.isNullOrUndef;
 /**
  * Generate a set of linear ticks
  * @param generationOptions the options used to generate the ticks
- * @param dataRange the range of the data
+ * @param dataRange the range of the findingsAnalyzer.data
  * @returns {number[]} array of tick values
  */
 function generateTicks(generationOptions, dataRange) {
@@ -13068,7 +13068,7 @@ var log10 = helpers$1.math.log10;
 /**
  * Generate a set of logarithmic ticks
  * @param generationOptions the options used to generate the ticks
- * @param dataRange the range of the data
+ * @param dataRange the range of the findingsAnalyzer.data
  * @returns {number[]} array of tick values
  */
 function generateTicks$1(generationOptions, dataRange) {
@@ -14308,8 +14308,8 @@ var defaultConfig$4 = {
 
 	/**
 	 * Data distribution along the scale:
-	 * - 'linear': data are spread according to their time (distances can vary),
-	 * - 'series': data are spread at the same distance from each other.
+	 * - 'linear': findingsAnalyzer.data are spread according to their time (distances can vary),
+	 * - 'series': findingsAnalyzer.data are spread at the same distance from each other.
 	 * @see https://github.com/chartjs/Chart.js/pull/4507
 	 * @since 2.7.0
 	 */
@@ -14317,8 +14317,8 @@ var defaultConfig$4 = {
 
 	/**
 	 * Scale boundary strategy (bypassed by min/max time options)
-	 * - `data`: make sure data are fully visible, ticks outside are removed
-	 * - `ticks`: make sure ticks are fully visible, data outside are truncated
+	 * - `findingsAnalyzer.data`: make sure findingsAnalyzer.data are fully visible, ticks outside are removed
+	 * - `ticks`: make sure ticks are fully visible, findingsAnalyzer.data outside are truncated
 	 * @see https://github.com/chartjs/Chart.js/pull/4556
 	 * @since 2.7.0
 	 */
@@ -14340,8 +14340,8 @@ var defaultConfig$4 = {
 		/**
 		 * Ticks generation input values:
 		 * - 'auto': generates "optimal" ticks based on scale size and time options.
-		 * - 'data': generates ticks from data (including labels from data {t|x|y} objects).
-		 * - 'labels': generates ticks from user given `data.labels` values ONLY.
+		 * - 'findingsAnalyzer.data': generates ticks from findingsAnalyzer.data (including labels from findingsAnalyzer.data {t|x|y} objects).
+		 * - 'labels': generates ticks from user given `findingsAnalyzer.data.labels` values ONLY.
 		 * @see https://github.com/chartjs/Chart.js/pull/4507
 		 * @since 2.7.0
 		 */
@@ -14380,7 +14380,7 @@ var scale_time = core_scale.extend({
 	},
 
 	/**
-	 * Allows data to be referenced via 't' attribute
+	 * Allows findingsAnalyzer.data to be referenced via 't' attribute
 	 */
 	getRightValue: function(rawValue) {
 		if (rawValue && rawValue.t !== undefined) {
@@ -14411,7 +14411,7 @@ var scale_time = core_scale.extend({
 			if (chart.isDatasetVisible(i)) {
 				data = chart.data.datasets[i].data;
 
-				// Let's consider that all data have the same format.
+				// Let's consider that all findingsAnalyzer.data have the same format.
 				if (helpers$1.isObject(data[0])) {
 					datasets[i] = [];
 
@@ -15140,7 +15140,7 @@ core_defaults._set('global', {
 			var ci = this.chart;
 			var meta = ci.getDatasetMeta(index);
 
-			// See controller.isDatasetVisible comment
+			// See findingsAnalyzer.controller.isDatasetVisible comment
 			meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
 
 			// We hid a dataset ... rerender the chart
@@ -15185,7 +15185,7 @@ core_defaults._set('global', {
 						pointStyle: style.pointStyle,
 						rotation: style.rotation,
 
-						// Below is extra data used for toggling the datasets
+						// Below is extra findingsAnalyzer.data used for toggling the datasets
 						datasetIndex: meta.index
 					};
 				}, this);
@@ -15242,7 +15242,7 @@ var Legend = core_element.extend({
  		 */
 		me._hoveredItem = null;
 
-		// Are we in doughnut mode which has a different data type
+		// Are we in doughnut mode which has a different findingsAnalyzer.data type
 		me.doughnutMode = false;
 	},
 
@@ -16123,7 +16123,7 @@ core_controller.LinearScaleBase = scale_linearbase;
 
 /**
  * Provided for backward compatibility, instead we should create a new Chart
- * by setting the type in the config (`new Chart(id, {type: '{chart-type}'}`).
+ * by setting the type in the findingsAnalyzer.config (`new Chart(id, {type: '{chart-type}'}`).
  * @deprecated since version 2.8.0
  * @todo remove at version 3
  */

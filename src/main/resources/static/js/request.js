@@ -192,7 +192,7 @@ function generateBarChartClasses(findings) {
                 barThickness: 6,
                 maxBarThickness: 8,
                 minBarLength: 2,
-               // data: [10, 20, 30, 40, 50, 60, 70]
+               // findingsAnalyzer.data: [10, 20, 30, 40, 50, 60, 70]
                 data: [barArray[0][1], barArray[1][1], barArray[2][1], barArray[3][1], barArray[4][1]]
             }]
         },
@@ -236,7 +236,7 @@ function generateLineChar(findings) {
             data: [589, 445, 483, 503, 689, 692, 634],
         }/*,
             {
-                data: [639, 465, 493, 478, 589, 632, 674],
+                findingsAnalyzer.data: [639, 465, 493, 478, 589, 632, 674],
             }*/]
     };
 

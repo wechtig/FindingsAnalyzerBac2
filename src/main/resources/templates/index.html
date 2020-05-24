@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>Findings Analyzer</title>
+
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/slider.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+        <script type="text/javascript" src="/js/ignoreTable.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
+        <script type="text/javascript" src="/js/configuration.js"></script>
+        <script type="text/javascript" src="/js/request.js"></script>
+        <script type="text/javascript" src="/js/sw.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/package/dist/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(function() {
+                    /*function pad(num, size) {
+                        var s = num+"";
+                        while (s.length < size) s = "0" + s;
+                        return s;
+                    }
+                    var formatSecs = function(totalsecs) {
+                        var hour = parseInt( totalsecs / 3600, 10) % 24;
+                        var min = parseInt( totalsecs / 60, 10) % 60;
+                        var secs = totalsecs % 60;
+
+                        return pad(hour,2)+":"+pad(min,2)+":"+pad(secs,2);
+                    };
+
+                    $( "#slider-range" ).slider({
+                        range: true,
+                        min: 0,
+                        max: 86400,
+                        values: [ 0, 86399 ],
+                        slide: function( event, ui ) {
+                            var min = ui.values[0];
+                            var max = ui.values[1];
+
+                            $( "#amount" ).val( formatSecs(min)+" - "+formatSecs(max) );
+                        }
+                    });
+
+                    $( "#amount" ).val( formatSecs($( "#slider-range" ).slider( "values", 0 ))+" - "+formatSecs($( "#slider-range" ).slider( "values", 1 )) );
+                    */
+
+                    $('#datetimepicker6').datepicker({ format: 'dd.mm.yyyy' });
+                    $('#datetimepicker7').datepicker({
+                        useCurrent: false,
+                        format: 'dd.mm.yyyy'
+                    });
+                    $("#datetimepicker6").on("dp.change", function(e) {
+                        $('#datetimepicker7').data("DatePicker");
+                    });
+                    $("#datetimepicker7").on("dp.change", function(e) {
+                        $('#datetimepicker6').data("DatePicker");
+                    });
+                    $('[data-toggle="tooltip"]').tooltip()
+                });
+            });
+        </script>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">FindingsAnalyzer</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Findings</a></li>
+                    <li><a th:href="@{/configurations}">Configuration</a></li>
+                    <li><a th:href="@{/reports}">Reports</a></li>
+                    <li class="nav-item" th:if="${currentUser == null}"><a class="nav-link" th:href="@{/login}">Log in</a></li>
+                    <li><p style="margin-top: 15px; margin-right: 4px" th:if="${currentUser}" th:text="${currentUser.fullname}"></p></li>
+                    <li class="nav-item" th:if="${currentUser}">
+                        <form th:action="@{/logout}" method="post">
+                            <input style="margin-top: 7px" type="submit" class="btn btn-light" value="Log out"/>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </head>
+    <body style="padding-left: 10px">
+
+        <noscript>
+            <h2>Sorry! Your browser doesn't support Javascript</h2>
+        </noscript>
+
+        <div class="topPage">
+            <div class="col-xs-2">
+                <label for="projects">Project</label>
+                <select id="projects" class="form-control" style="width:auto;">
+                    <option>alle</option>
+                </select>
+            </div>
+
+            <div class='col-md-3'>
+                <label for="start">Start Date</label>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker6'>
+                        <input type='text' class="form-control" id="start"/>
+                            <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-3'>
+                <label for="end">End Date</label>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker7'>
+                        <input type='text' class="form-control" id="end"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+           <!-- <div class='col-xs-2'>
+                <p>
+                    <label for="amount">Time range:</label>
+                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                </p>
+
+                <div id="slider-range"></div>
+            </div> -->
+
+            <div class="col-xs-2">
+                <label></label>
+                <button class="form-control" onclick="getProjectData(); loadIgnoreTable();">Search Findings</button>
+            </div>
+
+            <div class="col-xs-2">
+                <label></label>
+                <button id="exportButton" class="form-control" onclick="exportToPdf();" disabled>Export to PDF</button>
+            </div>
+
+        </div>
+        <div id="tableContainer">
+
+        </div>
+
+        <h4 style="padding-top: 90px">Ignore Message</h4>
+        <p>Um eine Message zu ignorieren und aus der Tabelle und den Analysen zu entfernen, muss die Message in die Tabelle eingetragen werden</p>
+        <p>Ist ein Teil der Message zu spezifisch (z.B. Variablenname in der Message), kann auch nur der wichtige Teil gespeichert werden</p>
+        <p>Beispiel: "Der Parameter xyz sollte als 'final' deklariert sein." -> eintragen als "sollte als 'final' deklariert sein"</p>
+
+        <div class='col-md-2'>
+            <div class="form-group">
+                <input type='text' class="form-control" id="newMessage"/>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <button id="addIgnoreMessage" class="form-control" onclick="ignoreMessage();">Ignore</button>
+        </div>
+
+        <br><br><br>
+        <div class='col-md-3' id="ignoreTableContainer">
+        </div>
+        <h4 style="padding-top: 90px">Recommendations</h4>
+        <p>Um f&uuml;r eine Message eine Recommendation zu erstellen, muss in den entsprechenden Feldern die Message und ein Recomendation-Link eingetragen werden</p>
+        <div class="row">
+            <div class='col-md-2'>
+                <div class="col">
+                    <input id="recError" type="text" class="form-control" placeholder="Message">
+                </div>
+            </div>
+            <div class='col-md-2'>
+                <div class="col">
+                    <input id="recLink" type="text" class="form-control" placeholder="Link">
+                </div>
+            </div>
+            <div class='col-md-1'>
+                <button id="Save" class="form-control" onclick="saveRecommendation();">Save</button>
+            </div>
+        </div>
+
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body" id="divProjcets">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body" id="divPackages">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <h3 class="chartTitle">Classes with most findings</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <canvas id="barChartClasses"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </br>
+        <h3 class="chartTitle">Most common findings</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <canvas id="barChartErrors"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+             <div class="row">
+                 <div class="col-12">
+                     <div class="card">
+                         <div class="card-body">
+                             <canvas id="chLine"></canvas>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </body>
+</html>
