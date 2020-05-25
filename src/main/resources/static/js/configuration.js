@@ -12,6 +12,16 @@ function loadConfigurationUI() {
             var vcsRepositoryLink = entry["vcsRepositoryLink"];
             var users = entry["users"];
 
+            if(description == null) {
+                description = "";
+            }
+
+            if(vcsRepositoryLink == null) {
+                vcsRepositoryLink = "";
+            }
+
+            var usersArray = users;
+
             var projectCollapse = "   <div class='card'>" +
                 "<div class='card-header' id='headingOne'>" +
                 " <h3>" +
@@ -20,9 +30,25 @@ function loadConfigurationUI() {
                 "            </div>" +
                 "            <div id='collapseOne' class='collapse show' aria-labelledby='headingOne' data-parent='#accordion'>" +
                 "                <div class='card-body'>" +
-                "<h4>Description"+description+"</h4>"+
-                "<h4>VCS Link"+vcsRepositoryLink+"</h4>"+
-                "<h4>Users"+users+"</h4>"+
+                "                     <div class='form-group row'>" +
+                "                          <h4 class='col-sm-1' >Description: </h4>"+
+                "                          <div class='col-sm-5'>"+
+                "                              <input class='form-control' id='"+name+"Description' value='"+description+"'/>"+
+                "                          </div>" +
+                "                     </div>"+
+                "                     <div class='form-group row'>" +
+                "                          <h4 class='col-sm-1' >VCS Link: </h4>"+
+                "                          <div class='col-sm-5'>"+
+                "                              <input class='form-control' id='"+name+"VCSLink' value='"+vcsRepositoryLink+"'/>"+
+                "                          </div>" +
+                "                     </div>"+
+                "                     <div class='form-group row'>" +
+                "                          <h4 class='col-sm-1' >Users: </h4>"+
+                "                          <div class='col-sm-5'>"+
+                "                              <input class='form-control' id='"+name+"Users' value='"+usersArray+"'/>"+
+                "                          </div>" +
+                "                          " +
+                "                     </div>"+
                 "                </div>" +
                 "            </div>" +
                 "        </div>";

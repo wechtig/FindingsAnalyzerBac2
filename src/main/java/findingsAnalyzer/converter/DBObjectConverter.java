@@ -72,6 +72,11 @@ public class DBObjectConverter {
 
         List<Document> userLinesDoc  = (List<Document>) e.get("users");
         List<User> users  = new ArrayList<>();
+
+        if(userLinesDoc == null) {
+            userLinesDoc = new ArrayList<>();
+        }
+
         for(Document document : userLinesDoc) {
             String userMail = (String) document.get("email");
             User user = userService.findByEmail(userMail);
@@ -85,6 +90,16 @@ public class DBObjectConverter {
         projectConfig.setUsers(users);
 
         return projectConfig;
+    }
+
+    public static Document convertProjectConfigToDocument(ProjectConfig projectConfig) {
+        org.bson.Document recDoc = new Document();
+        recDoc.append("name", projectConfig.getName());
+        recDoc.append("users", projectConfig.getUsers());
+        recDoc.append("description", projectConfig.getDescription());
+        recDoc.append("vcsRepositoryLink", projectConfig.getVcsRepositoryLink());
+
+        return recDoc;
     }
 
     public static Document convertUserToDocument(User user) {

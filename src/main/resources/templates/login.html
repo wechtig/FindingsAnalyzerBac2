@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default}">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>Login</title>
 </head>
 <body class="text-center">
-<div layout:fragment="content">
-    <form style="width: 300px" th:action="@{/login}" method="post">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <div th:if="${param.error}">
-            Invalid email and password.
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">FindingsAnalyzer</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Findings</a></li>
+                <li><a href="configurations.html">Configuration</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li class="nav-item" th:if="${currentUser == null}"><a class="btn btn-light" role="button" th:href="@{/login}">Log in</a></li>
+                <li class="nav-item" th:if="${currentUser}">
+                    <a class="nav-link" th:text="${fullName}"></a>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Sign Out"/>
+                    </form>
+                </li>
+            </ul>
         </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required="" />
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
-        <button class="btn btn-lg btn-primary btn-block" style="margin: 2px" type="submit">Sign in</button>
-    </form>
-    <form style="width: 300px;" th:action="@{/signup}" method="get">
-        <button class="btn btn-md btn-success btn-block" style="margin: 2px" type="Submit">Signup Here</button>
-    </form>
-</div>
+    </nav>
+    <div style="margin-left: 40%" layout:fragment="content">
+        <form style="width: 300px" th:action="@{/login}" method="post">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <div th:if="${param.error}">
+                Invalid email and password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required="" />
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
+            <button class="btn btn-lg btn-primary btn-block" style="margin: 2px" type="submit">Sign in</button>
+        </form>
+        <form style="width: 300px;" th:action="@{/signup}" method="get">
+            <button class="btn btn-md btn-success btn-block" style="margin: 2px" type="Submit">Signup Here</button>
+        </form>
+    </div>
 </body>
 </html>

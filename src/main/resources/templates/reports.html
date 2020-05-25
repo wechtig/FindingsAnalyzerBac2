@@ -5,27 +5,27 @@
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>reports</title>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/index}">FindingsAnalyzer</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/index}">Findings</a></li>
+                <li><a th:href="@{/configurations}">Configuration</a></li>
+                <li class="active"><a href="#">Reports</a></li>
+                <li class="nav-item" th:if="${currentUser == null}"><a class="nav-link" th:href="@{/login}">Log in</a></li>
+                <li><p style="margin-top: 15px; margin-right: 4px" th:if="${currentUser}" th:text="${currentUser.fullname}"></p></li>
+                <li class="nav-item" th:if="${currentUser}">
+                    <form th:action="@{/logout}" method="post">
+                        <input style="margin-top: 7px" type="submit" class="btn btn-light" value="Log out"/>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </head>
 <body style="padding-left: 10px">
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" th:href="@{/index}">FindingsAnalyzer</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/index}">Findings</a></li>
-            <li><a th:href="@{/configurations}">Configuration</a></li>
-            <li class="active"><a href="#">Reports</a></li>
-            <li class="nav-item" th:if="${currentUser == null}"><a class="nav-link" th:href="@{/login}">Log in</a></li>
-            <li><p style="margin-top: 15px; margin-right: 4px" th:if="${currentUser}" th:text="${currentUser.fullname}"></p></li>
-            <li class="nav-item" th:if="${currentUser}">
-                <form th:action="@{/logout}" method="post">
-                    <input style="margin-top: 7px" type="submit" class="btn btn-light" value="Log out"/>
-                </form>
-            </li>
-        </ul>
-    </div>
-</nav>
 <div class="container">
     <h3>Reports</h3>
     <p>Manuelles Erstellen von Reports, die dann heruntergeladen und versendet werden können</p>
