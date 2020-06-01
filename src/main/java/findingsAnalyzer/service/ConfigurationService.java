@@ -50,4 +50,13 @@ public class ConfigurationService {
         return list;
     }
 
+    public void saveConfig(String name, String description, String vcsLink) {
+        Document query = new Document();
+        query.append("name",name);
+        Document data = new Document();
+        data.append("description", description).append("vcsRepositoryLink", vcsLink);
+        Document updateQuery = new Document();
+        updateQuery.append("$set", data);
+        collection.updateOne(query, updateQuery);
+    }
 }

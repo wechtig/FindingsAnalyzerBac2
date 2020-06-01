@@ -1,4 +1,5 @@
 var urlProjectConfig = "http://localhost:8084/config/projects";
+var projects = [];
 function loadConfigurationUI() {
     fetch(urlProjectConfig).then(function(response) {
         return response.json();
@@ -9,6 +10,7 @@ function loadConfigurationUI() {
         result.forEach(function (entry) {
             var description = entry["description"];
             var name = entry["name"];
+            projects.push(name);
             var vcsRepositoryLink = entry["vcsRepositoryLink"];
             var users = entry["users"];
 
@@ -58,4 +60,28 @@ function loadConfigurationUI() {
 
         document.getElementById("projectContainer").innerHTML = dataCollapse;
     })
+}
+
+function saveConfigurations() {
+
+    var projectsData = [];
+    projects.forEach(function (value) {
+        var description = document.getElementById(value+"Description").value;
+        var vcsLink = document.getElementById(value+"VCSLink").value;
+
+        var projectData = value + "&&" + description + "&&" + vcsLink;
+        projectsData.push(projectData);
+        }
+    );
+
+    var messageAddRequest = new XMLHttpRequest();
+    var requestUrl = "http://localhost:8084/config/save";
+    messageAddRequest.open("POST",requestUrl);
+    messageAddRequest.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            //  to something
+        }
+    }
+
+    messageAddRequest.send(projectsData);
 }
