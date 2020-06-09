@@ -1,15 +1,22 @@
 var urlProjectConfig = "http://localhost:8084/config/projects";
 var projects = [];
 function loadConfigurationUI() {
+
     fetch(urlProjectConfig).then(function(response) {
         return response.json();
     }).then(function(json) {
         var result = json;
-
+        var projectData = document.getElementById("projectForUser");
         var dataCollapse = "";
         result.forEach(function (entry) {
-            var description = entry["description"];
             var name = entry["name"];
+            var opt = document.createElement('option');
+            opt.value = name;
+            opt.id = name;
+            opt.innerHTML = name;
+            projectData.appendChild(opt);
+
+            var description = entry["description"];
             projects.push(name);
             var vcsRepositoryLink = entry["vcsRepositoryLink"];
             var users = entry["users"];
@@ -46,10 +53,9 @@ function loadConfigurationUI() {
                 "                     </div>"+
                 "                     <div class='form-group row'>" +
                 "                          <h4 class='col-sm-1' >Users: </h4>"+
-                "                          <div class='col-sm-5'>"+
+                "                          <div class='col-sm-4'>"+
                 "                              <input class='form-control' id='"+name+"Users' value='"+usersArray+"'/>"+
                 "                          </div>" +
-                "                          " +
                 "                     </div>"+
                 "                </div>" +
                 "            </div>" +
@@ -60,6 +66,13 @@ function loadConfigurationUI() {
 
         document.getElementById("projectContainer").innerHTML = dataCollapse;
     })
+}
+
+function addUserToProject() {
+    var newUserName = document.getElementById("newUserMail").value;
+    var e = document.getElementById("projectForUser");
+    var project = e.options[e.selectedIndex].value;
+    console.log(project + " " + newUserName);
 }
 
 function saveConfigurations() {
