@@ -9,7 +9,10 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import findingsAnalyzer.converter.DBObjectConverter;
 import findingsAnalyzer.data.Finding;
+import findingsAnalyzer.data.ProjectConfig;
 import org.bson.Document;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,9 +28,11 @@ public class FindingsService {
     private MongoDatabase db;
     private MongoCollection<Document> collection;
     private IgnoreMessageService ignoreMessageService;
+    private ConfigurationService configurationService;
 
     public FindingsService() {
         connect();
+        configurationService = new ConfigurationService();
         ignoreMessageService = new IgnoreMessageService();
     }
 
@@ -41,6 +46,25 @@ public class FindingsService {
     }
 
     public List<Finding> getFindingsByProjectAndDate(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
+        ProjectConfig projectConfig = configurationService.findConfigByProjectname(projectName);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+
+        boolean allowed = false;
+
+        if(!allProjects) {
+            for(findingsAnalyzer.data.User projectUser : projectConfig.getUsers()) {
+                if(projectUser.getEmail().equals(user.getUsername())) {
+                    allowed = true;
+                }
+            }
+            if(!allowed) {
+                return new ArrayList<>();
+            }
+        } else {
+            // todo: filter all projects
+        }
+
         BasicDBObject dateRange = new BasicDBObject ("$gte", startDate);
         dateRange.put("$lt", endDate);
 
