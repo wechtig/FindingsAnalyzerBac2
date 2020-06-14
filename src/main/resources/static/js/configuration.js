@@ -29,7 +29,11 @@ function loadConfigurationUI() {
                 vcsRepositoryLink = "";
             }
 
-            var usersArray = users;
+            var usersArray = "";
+            users.forEach(function (entry) {
+                var text = entry["fullname"] + "(" + entry["email"] + "); " ;
+                usersArray += text;
+            })
 
             var projectCollapse = "   <div class='card'>" +
                 "<div class='card-header' id='headingOne'>" +
@@ -53,8 +57,8 @@ function loadConfigurationUI() {
                 "                     </div>"+
                 "                     <div class='form-group row'>" +
                 "                          <h4 class='col-sm-1' >Users: </h4>"+
-                "                          <div class='col-sm-4'>"+
-                "                              <input class='form-control' id='"+name+"Users' value='"+usersArray+"'/>"+
+                "                          <div class='col-sm-5'>"+
+                "                              <h3 id='"+name+"Users'>"+usersArray+"</h3>"+
                 "                          </div>" +
                 "                     </div>"+
                 "                </div>" +
@@ -72,6 +76,22 @@ function addUserToProject() {
     var newUserName = document.getElementById("newUserMail").value;
     var e = document.getElementById("projectForUser");
     var project = e.options[e.selectedIndex].value;
+    var messageAddRequest = new XMLHttpRequest();
+
+    var data = project+"&&"+newUserName;
+    data = data.replace(/\"/g, "");
+
+    fetch('http://localhost:8084/config/add/user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body:data,
+    }).then(function (data) {
+        console.log('Request success: ', data);
+    }).catch(function (error) {
+        console.log('Request failure: ', error);
+    });
     console.log(project + " " + newUserName);
 }
 

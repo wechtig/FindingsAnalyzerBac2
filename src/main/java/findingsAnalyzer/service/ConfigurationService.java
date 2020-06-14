@@ -1,5 +1,6 @@
 package findingsAnalyzer.service;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
@@ -8,11 +9,14 @@ import com.mongodb.client.MongoDatabase;
 import findingsAnalyzer.converter.DBObjectConverter;
 import findingsAnalyzer.data.Finding;
 import findingsAnalyzer.data.ProjectConfig;
+import findingsAnalyzer.data.User;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConfigurationService {
     public static final String DATABASE_NAME = "findings";
@@ -22,10 +26,12 @@ public class ConfigurationService {
     private MongoDatabase db;
     private MongoCollection<Document> collection;
     private IgnoreMessageService ignoreMessageService;
+    private UserSecurityService userSecurityService;
 
     public ConfigurationService() {
         connect();
         ignoreMessageService = new IgnoreMessageService();
+        userSecurityService = new UserSecurityService();
     }
 
     public List<ProjectConfig> getProjectConfigs() {
@@ -58,5 +64,40 @@ public class ConfigurationService {
         Document updateQuery = new Document();
         updateQuery.append("$set", data);
         collection.updateOne(query, updateQuery);
+    }
+
+    public void addUserToProject(String usermail, String project) {
+        User user = userSecurityService.findUserByEmail(usermail);
+        ProjectConfig projectConfig = findConfigByProjectname(project);
+
+        if(user == null || projectConfig == null) {
+            return;
+        }
+
+        List<User> users = projectConfig.getUsers();
+        users.add(user);
+
+        List<String> userDocuments = users.stream()
+                .map(u-> u.getEmail()).collect(Collectors.toList());
+
+        Document query = new Document();
+        query.append("name",project);
+        Document data = new Document();
+        data.append("users", userDocuments);
+        Document updateQuery = new Document();
+        updateQuery.append("$set", data);
+        collection.updateOne(query, updateQuery);
+    }
+
+    public ProjectConfig findConfigByProjectname(String projectname) {
+        BasicDBObject query = new BasicDBObject();
+        query.put("name", projectname);
+        Document document = collection.find(query).first();
+
+        if(document == null || document.isEmpty()) {
+            return null;
+        }
+
+        return DBObjectConverter.convertDocumentToProjectConfig(document);
     }
 }

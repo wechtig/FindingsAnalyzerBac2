@@ -70,16 +70,15 @@ public class DBObjectConverter {
         String vcsRepositoryLink = (String) e.get("vcsRepositoryLink");
         UserService userService = new UserService();
 
-        List<Document> userLinesDoc  = (List<Document>) e.get("users");
+        List<String> userLinesDoc  = (List<String>) e.get("users");
         List<User> users  = new ArrayList<>();
 
         if(userLinesDoc == null) {
             userLinesDoc = new ArrayList<>();
         }
 
-        for(Document document : userLinesDoc) {
-            String userMail = (String) document.get("email");
-            User user = userService.findByEmail(userMail);
+        for(String mail : userLinesDoc) {
+            User user = userService.findByEmail(mail);
             users.add(user);
         }
 

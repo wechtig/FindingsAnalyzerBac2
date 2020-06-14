@@ -20,7 +20,21 @@ public class ConfigurationController {
 
     }
 
-    @PostMapping("/config/save")
+    @PostMapping("/config/add/user")
+    public void saveUserToProject(@RequestBody String userData) {
+        if(userData==null) {
+            return;
+        }
+
+        String[] parts = userData.split("&&");
+        String project = parts[0];
+        String usermail = parts[1];
+
+        configurationService.addUserToProject(usermail, project);
+    }
+
+
+        @PostMapping("/config/save")
     public void saveConfig(@RequestBody String projectsData) {
         if(projectsData==null) {
             return;
