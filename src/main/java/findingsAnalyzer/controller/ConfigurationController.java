@@ -1,10 +1,7 @@
 package findingsAnalyzer.controller;
 
 import findingsAnalyzer.data.ProjectConfig;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import findingsAnalyzer.service.*;
 
 import java.time.format.DateTimeFormatter;
@@ -17,6 +14,12 @@ public class ConfigurationController {
     @GetMapping("/config/projects")
     public List<ProjectConfig> getProjectNames() {
         return configurationService.getProjectConfigs();
+
+    }
+
+    @GetMapping("/config/projects/{project}")
+    public ProjectConfig getProjectConfig(@PathVariable String project) {
+        return configurationService.findConfigByProjectname(project);
 
     }
 
@@ -39,11 +42,17 @@ public class ConfigurationController {
         if(projectsData==null) {
             return;
         }
-        String[] parts = projectsData.split("&&");
-        String name = parts[0];
-        String description = parts[1];
-        String vcsLink = parts[2];
 
-        configurationService.saveConfig(name, description, vcsLink);
+        String[] projectsFieldData = projectsData.split("%%");
+
+        for(int i = 0; i < projectsFieldData.length; i++) {
+            String[] parts = projectsFieldData[i].split("&&");
+            String name = parts[0];
+            String description = parts[1];
+            String vcsLink = parts[2];
+
+            configurationService.saveConfig(name, description, vcsLink);
+        }
+
     }
 }

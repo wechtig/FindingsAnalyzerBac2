@@ -97,13 +97,13 @@ function addUserToProject() {
 
 function saveConfigurations() {
 
-    var projectsData = [];
+    var projectsData = "";
     projects.forEach(function (value) {
         var description = document.getElementById(value+"Description").value;
         var vcsLink = document.getElementById(value+"VCSLink").value;
 
         var projectData = value + "&&" + description + "&&" + vcsLink;
-        projectsData.push(projectData);
+        projectsData += projectData+"%%";
         }
     );
 

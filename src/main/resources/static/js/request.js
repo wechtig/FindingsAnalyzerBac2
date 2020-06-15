@@ -30,7 +30,20 @@ function getProjectData() {
                 packages.push(findingObj["file"]);
             });
 
-            setTableData(findings);
+            var configRequest = new XMLHttpRequest();
+            var requestUrl = "http://localhost:8084/config/projects";
+            var configurations =   [];
+            configRequest.open("GET",requestUrl);
+            configRequest.onload = function () {
+                if (configRequest.status >= 200 && configRequest.status < 300) {
+                    var json_data = JSON.parse(configRequest.response);
+                    configurations = json_data;
+                    setTableData(findings, configurations);
+                }
+            };
+
+            configRequest.send();
+
             //generateLineChar(findings);
 
             if(project == "alle") {
@@ -264,7 +277,7 @@ function generateLineChar(findings) {
    //document.getElementById("chart1").value = chLine;
 }
 
-function setTableData(findings) {
+function setTableData(findings, configurations) {
     var htmlTable = "<table class='table table-striped' id='dataTable'><thead class='thead-dark'><tr>" +
         "<th scope='col'>File</th>" +
        "<th scope='col'>Project</th>" +
@@ -283,7 +296,7 @@ function setTableData(findings) {
         htmlTable += "<td>" + findings[i]["project"] + "</td>";
         htmlTable += getRecommendationForMessage(findings[i], recommendations);
         htmlTable += "<td>" + findings[i]["severity"] + "</td>";
-        htmlTable += "<td>" + findings[i]["line"] + "</td>";
+        htmlTable += "<td>" + getLineFieldByProjectConfig(pathFile, configurations, findings[i]["project"], findings[i]["line"]) + "</td>";
         htmlTable += "<td>" + findings[i]["date"] + "</td></tr>";
 
             /*var next = i+1;
@@ -297,6 +310,28 @@ function setTableData(findings) {
     document.getElementById("tableContainer").innerHTML = htmlTable;
     document.getElementById("exportButton").disabled = false;
     $('#dataTable').DataTable();
+}
+
+function getLineFieldByProjectConfig(pathFile, config, project, line) {
+    var lineField = "";
+    config.forEach(function (entry) {
+        if(entry["name"] == project) {
+            var githubPath = pathFile.split(project+"\\");
+            var fullPath = "";
+            for(var i = 1; i < githubPath.length; i++) {
+                fullPath += githubPath[i];
+            }
+
+            var link = entry["vcsRepositoryLink"] + "/blob/master/"+fullPath+"#L"+line;
+            lineField = "<a href='"+link+"' target='_blank'>"+line+"</a>";
+        }
+    });
+
+    if(lineField != "") {
+        return lineField;
+    }
+
+    return line;
 }
 
 function getRecommendationForMessage(finding, recommendations) {
