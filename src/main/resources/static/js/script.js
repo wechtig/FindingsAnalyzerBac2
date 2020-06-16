@@ -1,6 +1,8 @@
 var recommendations = [];
 window.onload = function (ev) {
     var projectData = document.getElementById("projects");
+    var reportProjects = document.getElementById("reportProjects");
+
     fetch(urlProjects).then(function(response) {
         return response.json();
     }).then(function(json) {
@@ -12,7 +14,14 @@ window.onload = function (ev) {
             opt.value = projectname;
             opt.id = projectname;
             opt.innerHTML = projectname;
-            projectData.appendChild(opt);
+
+            if(projectData != null) {
+                projectData.appendChild(opt);
+            }
+
+            if(reportProjects != null) {
+                reportProjects.appendChild(opt);
+            }
         });
             console.log(result);
     })
@@ -22,4 +31,4 @@ window.onload = function (ev) {
     }).then(function(json) {
         recommendations = json;
     })
-}
+};

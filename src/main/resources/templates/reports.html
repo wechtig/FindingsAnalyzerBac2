@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" src="/js/reports.js"></script>
+    <script type="text/javascript" src="/js/package/dist/Chart.js"></script>
+    <script type="text/javascript" src="/js/request.js"></script>
+    <script type="text/javascript" src="/js/sw.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>reports</title>
     <nav class="navbar navbar-default">
@@ -24,11 +34,89 @@
             </ul>
         </div>
     </nav>
+    <script>
+        $(document).ready(function() {
+            $(function() {
+                $('#datetimepicker6').datepicker({ format: 'dd.mm.yyyy' });
+                $('#datetimepicker7').datepicker({
+                    useCurrent: false,
+                    format: 'dd.mm.yyyy'
+                });
+                $("#datetimepicker6").on("dp.change", function(e) {
+                    $('#datetimepicker7').data("DatePicker");
+                });
+                $("#datetimepicker7").on("dp.change", function(e) {
+                    $('#datetimepicker6').data("DatePicker");
+                });
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        });
+    </script>
 </head>
 <body style="padding-left: 10px">
 <div class="container">
     <h3>Reports</h3>
     <p>Manuelles Erstellen von Reports, die dann heruntergeladen und versendet werden können</p>
+
+    <div class="topPage">
+        <div class="col-xs-2">
+            <label for="reportProjects">Project</label>
+            <select id="reportProjects" class="form-control" style="width:auto;">
+                <option>alle</option>
+            </select>
+        </div>
+
+        <div class='col-md-2'>
+            <label for="start">Start Date</label>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker6'>
+                    <input type='text' class="form-control" id="start"/>
+                    <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-2'>
+            <label for="end">End Date</label>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker7'>
+                    <input type='text' class="form-control" id="end"/>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <div class='col-md-2'>
+            <label for="end">Include findings list</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="includeFindings">
+                <label class="form-check-label" for="includeFindings">
+                    Default checkbox
+                </label>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <label></label>
+            <button id="exportButton" class="form-control" onclick="sendReport();">Send Report to team</button>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>
