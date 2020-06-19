@@ -6,11 +6,12 @@ import com.itextpdf.text.pdf.PdfWriter;
 import findingsAnalyzer.data.Finding;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 public class PdfExporter {
     FindingsService findingsService = new FindingsService();
     private final Font titleFont = FontFactory.
@@ -20,6 +21,59 @@ public class PdfExporter {
     private final Font textFont = FontFactory.
             getFont(FontFactory.HELVETICA, 10, Font.NORMAL);
 
+    public byte[] generateMailReportWithFindings() {
+       return null;
+    }
+
+    public byte[] generateMailReportWithoutFindings(List<Finding> findings, String projcetname, LocalDate startDate
+            , LocalDate endDate, String pathImg1, String pathImg2, String pathImg3) {
+
+        Document document = new Document();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        try
+        {
+            PdfWriter writer = PdfWriter.getInstance(document, byteArrayOutputStream);
+            document.open();
+            document.add(
+                    new Paragraph(
+                            projcetname + "Report - "+LocalDate.now(), titleFont));
+
+            document.add(
+                    new Paragraph(
+                            startDate.toString() + "-" + endDate.toString(), projectFont));
+
+            document.add(
+                    new Paragraph("Most common findings", textFont));
+
+            Image image = Image.getInstance(pathImg1);
+            document.add(image);
+
+            document.add(
+                    new Paragraph("Classes with most findings", textFont));
+
+            Image image2 = Image.getInstance(pathImg2);
+            document.add(image2);
+
+            document.add(
+                    new Paragraph("Findings per Packages", textFont));
+
+            Image image3 = Image.getInstance(pathImg2);
+            document.add(image3);
+
+            document.close();
+            writer.close();
+        } catch (DocumentException e)
+        {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return byteArrayOutputStream.toByteArray();
+    }
 
     public byte[] exportToPdf(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
         List<Finding> findings = findingsService.getFindingsByProjectAndDate(projectName, startDate, endDate, allProjects);
