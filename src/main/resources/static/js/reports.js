@@ -39,28 +39,35 @@ function sendReport() {
 }
 
 function sendReportWithoutFindings(findings) {
-    var chart1 = generateChart1(findings);
-    var chart2 = generateChart2(findings);
-    var chart3 = generateChart3(findings);
+    generateChart1(findings);
+    generateChart2(findings);
+    generateChart3(findings);
     var e = document.getElementById("reportProjects");
     var project = e.options[e.selectedIndex].value;
     var startDate = document.getElementById("start").value;
     var endDate = document.getElementById("end").value;
     var printFindings = document.getElementById("includeFindings").value;
+    setTimeout(function(){
+        var chart1 = document.getElementById("lineChart").toDataURL("image/jpg");
+        var chart2 = document.getElementById("chartClasses").toDataURL("image/jpg");
+        var chart3 = document.getElementById("pieChart").toDataURL("image/jpg");
 
-    var chartData = project+ "&&" +startDate+ "&&" +endDate + "&&" + chart1 + "&&" +  chart2 + "&&" + chart3;
+        var chartData = project+ "&&" +startDate+ "&&" +endDate + "&&" + chart1 + "&&" +  chart2 + "&&" + chart3;
 
-    fetch('http://localhost:8084/reports/chart/findings/false/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body:chartData,
-    }).then(function (data) {
-        console.log('Request success: ', data);
-    }).catch(function (error) {
-        console.log('Request failure: ', error);
-    });
+        fetch('http://localhost:8084/reports/chart/findings/false/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body:chartData,
+        }).then(function (data) {
+            console.log('Request success: ', data);
+        }).catch(function (error) {
+            console.log('Request failure: ', error);
+        });
+
+    },1000);
+
 }
 
 function sendReportWithFindings(findings) {
@@ -212,8 +219,8 @@ function generateChart1(findings) {
             }
         }}
     );
-
     var image1 = document.getElementById("lineChart").toDataURL("image/jpg");
+    console.log(image1);
     return image1;
 }
 
