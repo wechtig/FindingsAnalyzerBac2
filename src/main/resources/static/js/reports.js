@@ -3,7 +3,7 @@ function sendReport() {
     var project = e.options[e.selectedIndex].value;
     var startDate = document.getElementById("start").value;
     var endDate = document.getElementById("end").value;
-    var printFindings = document.getElementById("includeFindings").value;
+    var printFindings = document.getElementById("includeFindings").checked;
 
     var findingsRequest = new XMLHttpRequest();
     var params = project+"/"+startDate+"/"+endDate;

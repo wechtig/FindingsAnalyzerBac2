@@ -21,11 +21,69 @@ public class PdfExporter {
     private final Font textFont = FontFactory.
             getFont(FontFactory.HELVETICA, 10, Font.NORMAL);
 
-    public byte[] generateMailReportWithFindings() {
-       return null;
-    }
+    public byte[] generateMailReportWithFindings(List<Finding> findings, String projcetname, LocalDate startDate
+            , LocalDate endDate, String pathImg1, String pathImg2, String pathImg3) {
+        Document document = new Document();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-    public byte[] generateMailReportWithoutFindings(List<Finding> findings, String projcetname, LocalDate startDate
+        try
+        {
+            PdfWriter writer = PdfWriter.getInstance(document, byteArrayOutputStream);
+            document.open();
+            document.add(
+                    new Paragraph(
+                            projcetname + "Report - "+LocalDate.now() + "("+startDate.toString() + "-" + endDate.toString()+")", titleFont));
+
+            document.add(
+                    new Paragraph("Most common findings", textFont));
+
+            Image image = Image.getInstance(pathImg1);
+            image.scaleAbsolute(535,242);
+            document.add(image);
+
+            document.add(
+                    new Paragraph("Classes with most findings", textFont));
+
+            Image image2 = Image.getInstance(pathImg2);
+            image2.scaleAbsolute(535,242);
+            document.add(image2);
+
+            document.add(
+                    new Paragraph("Findings per Packages", textFont));
+
+            Image image3 = Image.getInstance(pathImg3);
+            image3.scaleAbsolute(535,242);
+            document.add(image3);
+
+
+            document.add(
+                    new Paragraph("Findings:", textFont));
+
+
+            Map<String, List<Finding>> findingsGrouped =
+                    findings.stream().collect(Collectors.groupingBy(f -> f.getProject()));
+            for (Map.Entry<String, List<Finding>> entry  : findingsGrouped.entrySet()) {
+                document.add(new Paragraph(entry.getKey(), projectFont));
+                List<Finding> findingListForProject = entry.getValue();
+                for(Finding finding : findingListForProject) {
+                    document.add(new Paragraph(finding.toString(), textFont));
+                }
+            }
+
+            document.close();
+            writer.close();
+        } catch (DocumentException e)
+        {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return byteArrayOutputStream.toByteArray();    }
+
+    public byte[] generateMailReportWithoutFindings(String projcetname, LocalDate startDate
             , LocalDate endDate, String pathImg1, String pathImg2, String pathImg3) {
 
         Document document = new Document();
@@ -37,28 +95,27 @@ public class PdfExporter {
             document.open();
             document.add(
                     new Paragraph(
-                            projcetname + "Report - "+LocalDate.now(), titleFont));
-
-            document.add(
-                    new Paragraph(
-                            startDate.toString() + "-" + endDate.toString(), projectFont));
+                            projcetname + "Report - "+LocalDate.now() + "("+startDate.toString() + "-" + endDate.toString()+")", titleFont));
 
             document.add(
                     new Paragraph("Most common findings", textFont));
 
             Image image = Image.getInstance(pathImg1);
+            image.scaleAbsolute(535,242);
             document.add(image);
 
             document.add(
                     new Paragraph("Classes with most findings", textFont));
 
             Image image2 = Image.getInstance(pathImg2);
+            image2.scaleAbsolute(535,242);
             document.add(image2);
 
             document.add(
                     new Paragraph("Findings per Packages", textFont));
 
-            Image image3 = Image.getInstance(pathImg2);
+            Image image3 = Image.getInstance(pathImg3);
+            image3.scaleAbsolute(535,242);
             document.add(image3);
 
             document.close();

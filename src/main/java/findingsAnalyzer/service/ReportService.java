@@ -14,12 +14,15 @@ public class ReportService {
 
     public void sendReportWithFindings(String project, LocalDate startDate, LocalDate endDate, String chart1, String chart2, String chart3) {
         List<Finding> findings = findingsService.getFindingsByProjectAndDate(project, startDate, endDate, false);
-        byte[] pdfReport = pdfExporter.generateMailReportWithoutFindings(findings, project, startDate, endDate, chart1, chart2, chart3);
+        byte[] pdfReport = pdfExporter.generateMailReportWithFindings(findings, project, startDate, endDate, chart1, chart2, chart3);
         ProjectConfig projectConfig = configurationService.findConfigByProjectname(project);
-
+        mailService.sendMail(projectConfig, pdfReport, startDate, endDate);
     }
 
     public void sendReportWithoutFindings(String project, LocalDate startDate, LocalDate endDate, String chart1, String chart2, String chart3) {
-
+        List<Finding> findings = findingsService.getFindingsByProjectAndDate(project, startDate, endDate, false);
+        byte[] pdfReport = pdfExporter.generateMailReportWithoutFindings(project, startDate, endDate, chart1, chart2, chart3);
+        ProjectConfig projectConfig = configurationService.findConfigByProjectname(project);
+        mailService.sendMail(projectConfig, pdfReport, startDate, endDate);
     }
 }
