@@ -84,6 +84,27 @@ public class FindingsService {
         return filteredFindings;
     }
 
+    protected List<Finding> getFindingsForSchedulerByProjectAndDate(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
+        BasicDBObject dateRange = new BasicDBObject ("$gte", startDate);
+        dateRange.put("$lt", endDate);
+
+        BasicDBObject query = new BasicDBObject("date", dateRange);
+
+        FindIterable<Document> cursor = collection.find(query);
+        Iterator it = cursor.iterator();
+
+        List<Finding> findings = getCheckstyleDataFromQuery(it);
+
+        if (allProjects != true) {
+            findings = findings.stream().filter(c -> c.getProject().equals(projectName)).collect(Collectors.toList());
+        }
+
+        List<Finding> filteredFindings = getFindingsWithoutIgnored(findings);
+
+        return filteredFindings;
+    }
+
+
     private void connect() {
         mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
         db = mongoClient.getDatabase(DATABASE_NAME);

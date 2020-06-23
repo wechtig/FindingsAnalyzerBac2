@@ -132,8 +132,43 @@ public class PdfExporter {
         return byteArrayOutputStream.toByteArray();
     }
 
-    public byte[] exportToPdf(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
+        public byte[] exportToPdf(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
         List<Finding> findings = findingsService.getFindingsByProjectAndDate(projectName, startDate, endDate, allProjects);
+        Document document = new Document();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        Map<String, List<Finding>> findingsGrouped =
+                findings.stream().collect(Collectors.groupingBy(f -> f.getProject()));
+
+        try
+        {
+            //PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("HelloWorld.pdf"));
+            PdfWriter writer = PdfWriter.getInstance(document, byteArrayOutputStream);
+            document.open();
+            document.add(
+                    new Paragraph(
+                            "Findings PDF Export. - "+LocalDate.now(), titleFont));
+
+            for (Map.Entry<String, List<Finding>> entry  : findingsGrouped.entrySet()) {
+                document.add(new Paragraph(entry.getKey(), projectFont));
+                List<Finding> findingListForProject = entry.getValue();
+                for(Finding finding : findingListForProject) {
+                    document.add(new Paragraph(finding.toString(), textFont));
+                }
+            }
+
+            document.close();
+            writer.close();
+        } catch (DocumentException e)
+        {
+            e.printStackTrace();
+        }
+
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    public byte[] exportToPdfScheduler(String name, LocalDate startDate, LocalDate endDate, boolean b) {
+        List<Finding> findings = findingsService.getFindingsForSchedulerByProjectAndDate(name, startDate, endDate, b);
         Document document = new Document();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 

@@ -1,0 +1,3 @@
+findings:
+    check:
+        cron: 0 0 12 ? * 5
