@@ -16,6 +16,7 @@
                 <li><a th:href="@{/index}">Findings</a></li>
                 <li class="active"><a href="#">Configuration</a></li>
                 <li><a th:href="@{/reports}">Reports</a></li>
+                <li><a th:href="@{/user}">User Informationen</a></li>
                 <li class="nav-item" th:if="${currentUser == null}"><a class="nav-link" th:href="@{/login}">Log in</a></li>
                 <li><p style="margin-top: 15px; margin-right: 4px" th:if="${currentUser}" th:text="${currentUser.fullname}"></p></li>
                 <li class="nav-item" th:if="${currentUser}">

@@ -2,7 +2,7 @@ var recommendations = [];
 window.onload = function (ev) {
     var projectData = document.getElementById("projects");
     var reportProjects = document.getElementById("reportProjects");
-
+    var userProjects = document.getElementById("userProjects");
     fetch(urlProjects).then(function(response) {
         return response.json();
     }).then(function(json) {
@@ -21,6 +21,10 @@ window.onload = function (ev) {
 
             if(reportProjects != null) {
                 reportProjects.appendChild(opt);
+            }
+
+            if(userProjects != null) {
+                userProjects.appendChild(opt);
             }
         });
             console.log(result);

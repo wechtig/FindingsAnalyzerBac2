@@ -48,6 +48,15 @@ public class FindingsController {
         return findingsService.getFindingsByProjectAndDate(project, startDate, endDate, allProjects);
     }
 
+    @GetMapping("/findings/user/{project}/{startDateStr}/{endDateStr}")
+    public List<Finding> getFindingsInformationForUser(@PathVariable String project
+            , @PathVariable String startDateStr, @PathVariable String  endDateStr) {
+        LocalDate startDate = LocalDate.parse(startDateStr, formatter);
+        LocalDate endDate = LocalDate.parse(endDateStr, formatter);
+
+        return findingsService.getFindingsByProjectAndDateForUser(project, startDate, endDate);
+    }
+
 
     @PostMapping("/export/{project}/{startDateStr}/{endDateStr}")
     public byte[] exportToPdf(@PathVariable String project

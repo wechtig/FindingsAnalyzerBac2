@@ -64,6 +64,16 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ModelAndView user() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("currentUser", user);
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
