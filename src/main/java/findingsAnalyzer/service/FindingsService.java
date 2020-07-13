@@ -11,20 +11,29 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import findingsAnalyzer.converter.DBObjectConverter;
 import findingsAnalyzer.data.Finding;
+import findingsAnalyzer.data.ImageContainer;
 import findingsAnalyzer.data.ProjectConfig;
+import org.apache.tomcat.jni.Local;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.bson.Document;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class FindingsService {
     public static final String DATABASE_NAME = "findings";
     public static final String COLLECTION_SONG = "checkstyleFindings";
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private MongoClient mongoClient;
     private MongoDatabase db;
@@ -89,7 +98,7 @@ public class FindingsService {
         return filteredFindings;
     }
 
-    protected List<Finding> getFindingsForSchedulerByProjectAndDate(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
+    public List<Finding> getFindingsForSchedulerByProjectAndDate(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
         BasicDBObject dateRange = new BasicDBObject ("$gte", startDate);
         dateRange.put("$lt", endDate);
 
@@ -166,6 +175,7 @@ public class FindingsService {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         findingsAnalyzer.data.User user = userService.findByEmail(loggedInUser.getUsername());
 
+        List<String> changedFilesByUser = new ArrayList<>();
         if(projectConfig.getVcsRepositoryLink() != null) {
             String projectPaths[] = projectConfig.getVcsRepositoryLink().split("/");
             String userPath = projectPaths[projectPaths.length-2];
@@ -233,11 +243,9 @@ public class FindingsService {
                     changedJavaFiles.add(filename.replace(".java",""));
                 }
             }
-            List<String> changedFiles = files.stream().distinct().collect(Collectors.toList());
+            changedFilesByUser = files.stream().distinct().collect(Collectors.toList());
 
         }
-
-
         boolean allowed = false;
 
         for(findingsAnalyzer.data.User projectUser : projectConfig.getUsers()) {
@@ -258,9 +266,87 @@ public class FindingsService {
         Iterator it = cursor.iterator();
 
         List<Finding> findings = getCheckstyleDataFromQuery(it);
-        List<Finding> filteredFindings = getFindingsWithoutIgnored(findings);
+        List<Finding> filteredFindings = getFindingsWithoutIgnoredAndUserFiltered(findings, changedFilesByUser);
 
         return filteredFindings;
+    }
+
+    private List<Finding> getFindingsWithoutIgnoredAndUserFiltered(List<Finding> findings, List<String> changedFilesByUser) {
+        List<String> ignoredMessages = ignoreMessageService.findAll();
+        List<Finding> filtered = new ArrayList<>();
+
+        if(ignoredMessages.size() == 0) {
+            return findings;
+        }
+
+        for(Finding finding : findings) {
+            boolean isIgnored = false;
+            boolean isNotChanged = false;
+            for (String message : ignoredMessages) {
+                if(finding.getMessage().contains(message)) {
+                    isIgnored = true;
+                }
+
+                for (String file : changedFilesByUser) {
+                    if(finding.getFile().equals(file)) {
+                        isNotChanged = true;
+                    }
+                }
+            }
+
+            if(isIgnored == false && isNotChanged == false) {
+                filtered.add(finding);
+            }
+        }
+
+        return filtered;
+    }
+
+    public List<ImageContainer> getFindingsForSchedulerImageByProjectAndDate(String project, LocalDate startDate, LocalDate endDate, boolean allProjects) {
+        File folder = new File("images");
+        File[] listOfFiles = folder.listFiles();
+        List<ImageContainer> imageContainers = new ArrayList<>();
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (listOfFiles[i].isFile()) {
+                String fileName = listOfFiles[i].getName();
+                String parts[] = fileName.split("_");
+                String description = "";
+                String datePart = parts[2].replace(".gif","");
+                LocalDate date = LocalDate.parse(datePart, formatter);
+                if(parts[1].contains("1")) {
+                    description = "Most common findings in project " + project;
+                }
+
+                else if(parts[1].contains("2")) {
+                    description = "Classes with most findings in " + project;
+                }
+
+                else if(parts[1].contains("3")) {
+                    description = "Findings per package in projcet " + project;
+                }
+
+                if(parts[0].equals(project) && date.isAfter(startDate) && date.isBefore(endDate)) {
+                    try {
+
+                        byte[] fileContent = Files.readAllBytes(listOfFiles[i].toPath());
+                        String content =  Base64.getEncoder().encodeToString(fileContent);
+                        ImageContainer imageContainer = new ImageContainer();
+                        imageContainer.setDescription(description);
+                        imageContainer.setImage(content);
+                        imageContainers.add(imageContainer);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            } else if (listOfFiles[i].isDirectory()) {
+                System.out.println("Directory " + listOfFiles[i].getName());
+            }
+        }
+
+        return imageContainers;
     }
 }
 

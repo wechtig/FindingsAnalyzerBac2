@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>configuration</title>
@@ -50,7 +54,7 @@
                 $("#datetimepicker7").on("dp.change", function(e) {
                     $('#datetimepicker6').data("DatePicker");
                 });
-                $('[data-toggle="tooltip"]').tooltip()
+                //$('[data-toggle="tooltip"]').tooltip()
             });
         });
     </script>
@@ -68,7 +72,7 @@
         </div>
 
         <div class='col-md-2'>
-            <label for="start">Start Date</label>
+            <label for="startdate">Start Date</label>
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker6'>
                     <input type='text' class="form-control" id="startdate"/>
@@ -79,7 +83,7 @@
             </div>
         </div>
         <div class='col-md-2'>
-            <label for="end">End Date</label>
+            <label for="enddate">End Date</label>
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker7'>
                     <input type='text' class="form-control" id="enddate"/>

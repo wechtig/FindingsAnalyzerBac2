@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2f970b6-24f2-4513-a129-40b742fdb637" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/HttpGithubClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/userInformation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/AndroidTestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/ImageContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/FindingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/FindingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/configurations.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/configurations.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/reports.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/userInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,56 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/sw.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="50" selection-start-column="19" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/reports.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="44" selection-start-line="11" selection-end-line="12" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/script.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="232" selection-start-line="232" selection-end-line="232" />
+            <state relative-caret-position="388">
+              <caret line="205" selection-start-line="205" selection-end-line="205" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,12 +33,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/signup.html">
+        <entry file="file://$PROJECT_DIR$/images/Hangman_chart1_2020-06-24.gif">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images/Hangman_chart2_2020-06-24.gif">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="102" selection-start-line="42" selection-start-column="102" selection-end-line="42" selection-end-column="102" />
+            <state relative-caret-position="306">
+              <caret line="18" column="124" selection-start-line="18" selection-start-column="124" selection-end-line="18" selection-end-column="124" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/PdfExporter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="86" column="62" lean-forward="true" selection-start-line="86" selection-start-column="62" selection-end-line="86" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/HttpGithubClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+            <state relative-caret-position="425">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,19 +81,50 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/userInformation.js">
+        <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/ConfigurationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="57" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
+            <state relative-caret-position="492">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+            <state relative-caret-position="306">
+              <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="59" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="59" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/FindingsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="e#1107#1108#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,29 +136,13 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="package-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>select</find>
-      <find>onclick</find>
-      <find>projectData</find>
-      <find>post</find>
-      <find>convertDocumentToProjectConfig</find>
-      <find>line</find>
-      <find>getProjectConfig</find>
-      <find>findings</find>
-      <find>settable</find>
-      <find>setTableData</find>
-      <find>getBarArrayErrors</find>
-      <find>barChartErrors</find>
-      <find>chart</find>
-      <find>method: '</find>
-      <find>report</find>
-      <find>getPieData</find>
       <find>pieChartProjects</find>
       <find>getRandomColors</find>
       <find>layo</find>
@@ -171,6 +157,22 @@
       <find>jack</find>
       <find>ful</find>
       <find>lastinde</find>
+      <find>tableco</find>
+      <find>config/projects</find>
+      <find>#dataTable</find>
+      <find>data-t</find>
+      <find>data-to</find>
+      <find>datatable</find>
+      <find>data-</find>
+      <find>dataTable</find>
+      <find>&quot;</find>
+      <find>parse</find>
+      <find>new finding</find>
+      <find>path</find>
+      <find>formatt</find>
+      <find>jquer</find>
+      <find>data</find>
+      <find>datata</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,8 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/converter/DBObjectConverter.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/reports.html" />
         <option value="$PROJECT_DIR$/src/main/java/config/SuccessHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/findingsDashboard.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/login.html" />
@@ -200,7 +200,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/converter/DBObjectConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/ConfigurationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/ConfigurationController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/configuration.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/request.js" />
         <option value="$PROJECT_DIR$/target/classes/static/js/package/dist/Chart.bundle.min.js" />
@@ -211,11 +210,9 @@
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/MailService.java" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/ReportService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/reports.js" />
-        <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/PdfExporter.java" />
         <option value="$PROJECT_DIR$/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/batchJobs/ReportScheduler.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/userInformation.js" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/FindingsController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/reports.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
@@ -223,13 +220,18 @@
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/script.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/user.html" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/HttpClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/HttpGithubClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/package-info.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/signup.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/userInformation.js" />
+        <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/ConfigurationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/ImageContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/AndroidTestController.java" />
         <option value="$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/user.html" />
       </list>
     </option>
   </component>
@@ -250,8 +252,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-1491" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -268,6 +269,11 @@
             <path>
               <item name="FindingsAnalyzerBac2" type="b2602c69:ProjectViewProjectNode" />
               <item name="FindingsAnalyszerBac2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FindingsAnalyzerBac2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FindingsAnalyszerBac2" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FindingsAnalyzerBac2" type="b2602c69:ProjectViewProjectNode" />
@@ -402,7 +408,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593422944915" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1594641414723" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../VI. Semester/Model Driven Development/Projekte/teiniker-lectures-modeldrivendevelopment-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -495,6 +501,13 @@
       <workItem from="1593414178437" duration="1622000" />
       <workItem from="1593415831955" duration="7149000" />
       <workItem from="1593423448882" duration="2032000" />
+      <workItem from="1593432689200" duration="108000" />
+      <workItem from="1593440690138" duration="1648000" />
+      <workItem from="1593711357381" duration="2561000" />
+      <workItem from="1593763085828" duration="3497000" />
+      <workItem from="1594018002344" duration="6855000" />
+      <workItem from="1594373729582" duration="10000" />
+      <workItem from="1594624324649" duration="5242000" />
     </task>
     <task id="LOCAL-00001" summary="add configurations service and html">
       <created>1589196595228</created>
@@ -608,16 +621,24 @@
       <option name="project" value="LOCAL" />
       <updated>1592934809583</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add job scheduler report">
+      <created>1593432764698</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1593432764698</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99353000" />
+    <option name="totallyTimeSpent" value="119274000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="0" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.88045233" visible="true" weight="0.30597016" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.88045233" visible="true" weight="0.32995737" />
       <window_info id="Structure" order="1" sideWeight="0.11954766" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -628,15 +649,15 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4173774" weight="0.3261105" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.48667377" weight="0.3997833" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.45469084" visible="true" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.48081023" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.48081023" weight="0.32936078" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="CheckStyle" order="10" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5826226" side_tool="true" weight="0.3261105" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5453092" side_tool="true" weight="0.3997833" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" sideWeight="0.4978678" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
@@ -790,61 +811,96 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
-          <line>232</line>
+          <line>270</line>
           <properties />
-          <option name="timeStamp" value="56" />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>177</line>
+          <properties />
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>186</line>
+          <properties />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/HttpGithubClient.java</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/HttpGithubClient.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>213</line>
+          <properties />
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>215</line>
+          <properties />
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>226</line>
+          <properties />
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>245</line>
+          <properties />
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>242</line>
+          <properties />
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>237</line>
+          <properties />
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/FindingsController.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>201</line>
+          <properties />
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java</url>
+          <line>205</line>
+          <properties />
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/ProjectConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/package/package.json" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/package/README.md" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.css" />
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17189" column="14" selection-start-line="17189" selection-start-column="14" selection-end-line="17189" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ignoreTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" column="41" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.2.2.RELEASE/spring-security-core-5.2.2.RELEASE.jar!/org/springframework/security/core/Authentication.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/ConfigurationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -860,13 +916,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.bundle.js" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/package/dist/Chart.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/converter/DBObjectConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/package/composer.json" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/package/LICENSE.md" />
     <entry file="jar://$MAVEN_REPOSITORY$/com/itextpdf/itextpdf/5.5.13/itextpdf-5.5.13.jar!/com/itextpdf/text/Image.class">
@@ -886,16 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/PdfExporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -903,40 +942,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/ConfigurationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" column="65" selection-start-line="25" selection-start-column="3" selection-end-line="26" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="26" column="18" selection-start-line="25" selection-start-column="14" selection-end-line="26" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/MailService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/ReportsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" column="29" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -988,33 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/FindingsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/findingsDashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/configurations.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1029,27 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="72" column="37" lean-forward="true" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="53" column="58" lean-forward="true" selection-start-line="53" selection-start-column="58" selection-end-line="53" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1057,20 +1018,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/reports.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7004">
-          <caret line="412" column="22" selection-start-line="412" selection-start-column="22" selection-end-line="412" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1122,17 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -1143,23 +1079,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/HttpGithubClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/userInformation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="57" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -1167,17 +1086,217 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/findingsDashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4760">
+          <caret line="280" column="69" selection-start-line="280" selection-start-column="60" selection-end-line="280" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/ProjectConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/userInformation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/reports.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/config/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/converter/DBObjectConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" selection-start-line="28" selection-end-line="35" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/ConfigurationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="9" selection-start-line="9" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/ReportsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="33" column="92" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/Finding.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="86" column="65" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="65" />
+        <state relative-caret-position="85">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="12" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/Hangman_chart3_2020-06-24.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/data/ImageContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding>
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/AndroidTestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/Base64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/Hangman_chart1_2020-06-24.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/Hangman_chart2_2020-06-24.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="59" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="124" selection-start-line="18" selection-start-column="124" selection-end-line="18" selection-end-column="124" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/PdfExporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="86" column="62" lean-forward="true" selection-start-line="86" selection-start-column="62" selection-end-line="86" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/HttpGithubClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/ConfigurationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/controller/FindingsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#1107#1108#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/findingsAnalyzer/service/FindingsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="232" selection-start-line="232" selection-end-line="232" />
+        <state relative-caret-position="388">
+          <caret line="205" selection-start-line="205" selection-end-line="205" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

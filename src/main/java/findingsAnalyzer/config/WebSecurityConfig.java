@@ -53,6 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/android/**").permitAll()
+
                 .antMatchers("/login").permitAll()
                 .antMatchers("/index").hasAuthority("USER")
                 .antMatchers("/reports").hasAuthority("USER")
