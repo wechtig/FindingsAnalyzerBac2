@@ -24,3 +24,10 @@ body {
 .ui-slider-range {
     background: rgb(255, 130, 37);
 }
+.lol{
+    display: block;
+    color: #F00;
+}
+.modal-backdrop {
+    background-color: transparent !important;
+}

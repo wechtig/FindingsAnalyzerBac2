@@ -1,3 +1,4 @@
+var currentFindingModal = -1;
 function getProjectData() {
     var e = document.getElementById("projects");
     var project = e.options[e.selectedIndex].value;
@@ -284,8 +285,10 @@ function setTableData(findings, configurations) {
        "<th scope='col'>Message</th>" +
         "<th scope='col'>Severity</th>" +
        "<th scope='col'>Line</th>" +
-       "<th scope='col'>Date</th>" +
-       "</tr></thead><tbody>";
+        "<th scope='col'>Date</th>" +
+        "<th scope='col'>Add comments</th>" +
+        "<th scope='col'>View comments</th>" +
+        "</tr></thead><tbody>";
 
     console.log("recommendations: "+recommendations);
     for (var i=0; i<findings.length; i++) {
@@ -297,19 +300,40 @@ function setTableData(findings, configurations) {
         htmlTable += getRecommendationForMessage(findings[i], recommendations);
         htmlTable += "<td>" + findings[i]["severity"] + "</td>";
         htmlTable += "<td>" + getLineFieldByProjectConfig(pathFile, configurations, findings[i]["project"], findings[i]["line"]) + "</td>";
-        htmlTable += "<td>" + findings[i]["date"] + "</td></tr>";
+        htmlTable += "<td>" + findings[i]["date"] + "</td>";
+        htmlTable += "<td><button data-rowId='"+i+"' class='addComment'>Add</button></td>";
+        htmlTable += "<td><button data-rowId='"+i+"' class='viewComment'>View</button></td></tr>";
 
-            /*var next = i+1;
-            if (next%perrow==0 && next!=findings.length) {
-                htmlTable += "</tr><tr>";
-            }*/
     }
+    $("#tableContainer").on("click",".addComment", function(e){
+        currentFindingModal = $(this).data().rowid;
+        addComment(findings[$(this).data().rowid]);
+    });
+    $("#tableContainer").on("click",".viewComment", function(e){
+        viewComments(findings[$(this).data().rowid]);
+    });
     //htmlTable += "</tr></table>";
     htmlTable += "</tbody></table>";
 
     document.getElementById("tableContainer").innerHTML = htmlTable;
     document.getElementById("exportButton").disabled = false;
     $('#dataTable').DataTable();
+}
+
+function addComment(finding) {
+    $('#addModal').modal('show');
+}
+
+function saveComment() {
+    var comment = document.getElementById("comment").value;
+    console.log("Save für " + currentFindingModal + " mit daten: " + comment);
+
+}
+
+function viewComments(finding) {
+    $('#locModal').modal('show');
+    $(".modal-body #bookId").val("1");
+    $(".modal-body #daten").html("<p>Test</p>");
 }
 
 function getLineFieldByProjectConfig(pathFile, config, project, line) {
