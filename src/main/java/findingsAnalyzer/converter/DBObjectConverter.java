@@ -123,4 +123,20 @@ public class DBObjectConverter {
         user.setRoles(new HashSet<>(Arrays.asList("USER")));
         return user;
     }
+
+    public static Comment convertDocumentToComment(Document e) {
+        ObjectId id_d = (ObjectId) e.get("_id");
+        String id = id_d.toString();
+        String findingId_d = (String)e.get("findingId");
+        String findingId = findingId_d.toString();
+        String text = (String) e.get("text");
+        return new Comment(id, findingId, text);
+    }
+
+    public static Document convertCommentToDocument(Comment comment) {
+        org.bson.Document recDoc = new Document();
+        recDoc.append("findingId", comment.getFindingId());
+        recDoc.append("text", comment.getText());
+        return recDoc;
+    }
 }

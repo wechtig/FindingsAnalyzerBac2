@@ -98,6 +98,23 @@ public class FindingsService {
         return filteredFindings;
     }
 
+    public List<Finding> getFindingByProjectDateMessageFile(String project, LocalDate date, String message, String file, int line) {
+        BasicDBObject criteria = new BasicDBObject();
+        criteria.append("project", project);
+        FindIterable<Document> cursor = collection.find(criteria);
+        Iterator it = cursor.iterator();
+        List<Finding> findings = getCheckstyleDataFromQuery(it);
+        List<Finding> commentFindings = new ArrayList<>();
+        for (Finding finding : findings) {
+            if (finding.getLine().equals(line+"") && finding.getMessage().equals(message) && finding.getFile().contains(file)) {
+                commentFindings.add(finding);
+            }
+        }
+
+
+        return commentFindings;
+    }
+
     public List<Finding> getFindingsForSchedulerByProjectAndDate(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
         BasicDBObject dateRange = new BasicDBObject ("$gte", startDate);
         dateRange.put("$lt", endDate);

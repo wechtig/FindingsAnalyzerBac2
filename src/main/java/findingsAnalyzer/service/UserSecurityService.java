@@ -14,8 +14,7 @@ import java.util.*;
 
 @Service
 public class UserSecurityService implements UserDetailsService {
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     private UserService userService = new UserService();
 
@@ -23,12 +22,11 @@ public class UserSecurityService implements UserDetailsService {
         return userService.findByEmail(email);
     }
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setEnabled(true);
-        // Role userRole = roleRepository.findByRole("ADMIN");
-        user.setRoles(new HashSet<>(Arrays.asList("USER")));
-        // userRepository.save(user);
         userService.saveUser(user);
     }
 

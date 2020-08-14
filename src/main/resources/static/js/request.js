@@ -1,4 +1,5 @@
 var currentFindingModal = -1;
+var commentFindings = [];
 function getProjectData() {
     var e = document.getElementById("projects");
     var project = e.options[e.selectedIndex].value;
@@ -317,6 +318,7 @@ function setTableData(findings, configurations) {
 
     document.getElementById("tableContainer").innerHTML = htmlTable;
     document.getElementById("exportButton").disabled = false;
+    commentFindings = findings;
     $('#dataTable').DataTable();
 }
 
@@ -325,14 +327,45 @@ function addComment(finding) {
 }
 
 function saveComment() {
+    var messageAddRequest = new XMLHttpRequest();
+    var requestUrl = "http://localhost:8084/findings/comment";
     var comment = document.getElementById("comment").value;
-    console.log("Save für " + currentFindingModal + " mit daten: " + comment);
 
+    messageAddRequest.open("POST",requestUrl);
+    messageAddRequest.onreadystatechange = function() { // Call a function when the state changes.
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        }
+    }
+
+    messageAddRequest.send(commentFindings[currentFindingModal]["project"] + "&&" +
+        commentFindings[currentFindingModal]["date"] + "&&" +
+        commentFindings[currentFindingModal]["file"] + "&&" +
+        commentFindings[currentFindingModal]["line"] + "&&" +
+        commentFindings[currentFindingModal]["message"] + "&&" +comment);
 }
 
 function viewComments(finding) {
     $('#locModal').modal('show');
-    $(".modal-body #daten").html("<p>Test</p>");
+
+    var configRequest = new XMLHttpRequest();
+    var filename = finding["file"].replace(/^.*[\\\/]/, '')
+
+    var requestUrl = "http://localhost:8084/findings/comment/"+finding["project"]+"/"+finding["date"]+"/"+filename+"/"+finding["line"]+"/"+finding["message"];
+    var data = "";
+    configRequest.open("GET",requestUrl);
+    configRequest.onload = function () {
+        if (configRequest.status >= 200 && configRequest.status < 300) {
+            var json_data = JSON.parse(configRequest.response);
+            json_data.forEach(function (entry) {
+                var text = entry["text"];
+                data += text;
+            });
+            $(".modal-body #daten").html("<p>"+data+"</p>");
+        }
+    };
+
+    configRequest.send();
+
 }
 
 function getLineFieldByProjectConfig(pathFile, config, project, line) {

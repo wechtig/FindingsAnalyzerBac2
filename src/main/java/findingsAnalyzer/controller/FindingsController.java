@@ -1,12 +1,10 @@
 package findingsAnalyzer.controller;
 
+import findingsAnalyzer.data.Comment;
 import findingsAnalyzer.data.Finding;
 import findingsAnalyzer.data.Recommendation;
+import findingsAnalyzer.service.*;
 import org.springframework.web.bind.annotation.*;
-import findingsAnalyzer.service.FindingsService;
-import findingsAnalyzer.service.IgnoreMessageService;
-import findingsAnalyzer.service.PdfExporter;
-import findingsAnalyzer.service.RecommendationService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,6 +16,7 @@ public class FindingsController {
     RecommendationService recommendationService = new RecommendationService();
     PdfExporter pdfExporter = new PdfExporter();
     IgnoreMessageService ignoreMessageService= new IgnoreMessageService();
+    CommentService commentService = new CommentService();
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
@@ -57,6 +56,47 @@ public class FindingsController {
         return findingsService.getFindingsByProjectAndDateForUser(project, startDate, endDate);
     }
 
+    @GetMapping("/findings/comment/{project}/{dateStr}/{file}/{lineStr}/{message}")
+    public List<Comment> getComments(@PathVariable String project
+            , @PathVariable String dateStr, @PathVariable String  file,  @PathVariable String  lineStr,  @PathVariable String  message) {
+        final DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(dateStr, formatter2);
+        int line = Integer.parseInt(lineStr);
+
+        List<Finding> findings = findingsService.getFindingByProjectDateMessageFile(project, date, message, file, line);
+        return  commentService.findCommentsByMessageAndDate(findings);
+    }
+
+    @PostMapping("/findings/comment/{project}/{date}/{file}/{line}/{message}/{text")
+    public void saveComment(@PathVariable String project
+            , @PathVariable String dateStr, @PathVariable String  file,  @PathVariable String  lineStr,  @PathVariable String  message, String text) {
+        LocalDate date = LocalDate.parse(dateStr, formatter);
+        int line = Integer.parseInt(lineStr);
+
+        List<Finding> findings = findingsService.getFindingByProjectDateMessageFile(project, date, message, file, line);
+        commentService.saveComment(findings.get(0), text);
+    }
+
+    @PostMapping("/findings/comment")
+    public void saveComment2(@RequestBody String valueOne) {
+        final DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        String[] parts = valueOne.split("&&");
+        String project = parts[0];
+        String dateStr = parts[1];
+        String file = parts[2];
+        String lineStr = parts[3];
+        int line = Integer.parseInt(lineStr);
+        String message = parts[4];
+        String commment = parts[5];
+        LocalDate date = LocalDate.parse(dateStr, formatter2);
+
+        List<Finding> findings = findingsService.getFindingByProjectDateMessageFile(project, date, message, file, line);
+        if(findings == null || findings.isEmpty()) {
+            return;
+        }
+        commentService.saveComment(findings.get(0), commment);
+    }
 
     @PostMapping("/export/{project}/{startDateStr}/{endDateStr}")
     public byte[] exportToPdf(@PathVariable String project

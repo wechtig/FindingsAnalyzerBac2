@@ -35,15 +35,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     CustomizeAuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
 
     @Bean
-    public UserDetailsService mongoUserDetails() {
+    public UserDetailsService userDetailService() {
         return new UserSecurityService();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        UserDetailsService userDetailsService = mongoUserDetails();
-        auth
-                .userDetailsService(userDetailsService)
+        UserDetailsService userDetailsService = userDetailService();
+        auth.userDetailsService(userDetailsService)
                 .passwordEncoder(bCryptPasswordEncoder);
 
     }
@@ -55,11 +54,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/android/**").permitAll()
 
-                .antMatchers("/login").permitAll()
                 .antMatchers("/index").hasAuthority("USER")
-                .antMatchers("/reports").hasAuthority("USER")
                 .antMatchers("/configurations").hasAuthority("USER")
                 .antMatchers("/signup").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/reports").hasAuthority("USER")
                 .antMatchers("/findingsDashboard").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler)
                 .loginPage("/login").failureUrl("/login?error=true")
