@@ -98,6 +98,24 @@ public class FindingsController {
         commentService.saveComment(findings.get(0), commment);
     }
 
+    @PostMapping("/findings/comment/find")
+    public List<Comment> getComment(@RequestBody String valueOne) {
+        String[] parts = valueOne.split("&&");
+        String project = parts[0].replaceAll("\"", "");
+        String dateStr = parts[1].replaceAll("\"", "");
+        String file = parts[2].replaceAll("\"", "");
+        String lineStr = parts[3].replaceAll("\"", "");
+        String message = parts[4].replaceAll("\"", "");
+
+        final DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(dateStr, formatter2);
+        int line = Integer.parseInt(lineStr);
+
+        List<Finding> findings = findingsService.getFindingByProjectDateMessageFile(project, date, message, file, line);
+        return  commentService.findCommentsByMessageAndDate(findings);
+    }
+
+
     @PostMapping("/export/{project}/{startDateStr}/{endDateStr}")
     public byte[] exportToPdf(@PathVariable String project
             , @PathVariable String startDateStr, @PathVariable String  endDateStr) {

@@ -58,7 +58,7 @@ function loadConfigurationUI() {
                 "                     <div class='form-group row'>" +
                 "                          <h4 class='col-sm-1' >Users: </h4>"+
                 "                          <div class='col-sm-5'>"+
-                "                              <h3 id='"+name+"Users'>"+usersArray+"</h3>"+
+                "                              <p id='"+name+"Users'>"+usersArray+"</p>"+
                 "                          </div>" +
                 "                     </div>"+
                 "                </div>" +

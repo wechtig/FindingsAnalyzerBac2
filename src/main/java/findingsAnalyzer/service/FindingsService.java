@@ -66,6 +66,10 @@ public class FindingsService {
 
         boolean allowed = false;
 
+        if(projectConfig.getUsers() == null) {
+            return new ArrayList<>();
+        }
+
         if(!allProjects) {
             for(findingsAnalyzer.data.User projectUser : projectConfig.getUsers()) {
                 if(projectUser.getEmail().equals(user.getUsername())) {

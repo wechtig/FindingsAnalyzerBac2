@@ -344,7 +344,7 @@ function saveComment() {
         commentFindings[currentFindingModal]["message"] + "&&" +comment);
 }
 
-function viewComments(finding) {
+/*function viewComments(finding) {
     $('#locModal').modal('show');
 
     var configRequest = new XMLHttpRequest();
@@ -363,6 +363,34 @@ function viewComments(finding) {
             $(".modal-body #daten").html("<p>"+data+"</p>");
         }
     };
+
+    configRequest.send();
+
+}*/
+
+function viewComments(finding) {
+    $('#locModal').modal('show');
+
+    var configRequest = new XMLHttpRequest();
+    var filename = finding["file"].replace(/^.*[\\\/]/, '')
+    var commentText = "";
+    var requestUrl = "http://localhost:8084/findings/comment/find";
+    var data = finding["project"]+"&&"+finding["date"]+"&&"+filename+"&&"+finding["line"]+"&&"+finding["message"];
+    fetch('http://localhost:8084/findings/comment/find', {
+        method: 'POST',
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(function (entry) {
+                var text = entry["text"];
+                commentText += text;
+            });
+
+            $(".modal-body #daten").html("<p>"+commentText+"</p>");
+
+        });
+
 
     configRequest.send();
 

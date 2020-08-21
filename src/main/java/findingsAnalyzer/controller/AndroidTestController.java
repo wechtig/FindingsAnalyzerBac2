@@ -15,7 +15,8 @@ import java.util.List;
 @RestController
 public class AndroidTestController {
     FindingsService findingsService = new FindingsService();
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private final DateTimeFormatter formatterImages = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     @GetMapping("/android/projects")
     public List<String> getProjectNames() {
@@ -40,8 +41,8 @@ public class AndroidTestController {
     @GetMapping("/android/findings/images/{project}/{startDateStr}/{endDateStr}")
     public List<ImageContainer> getFindingsImagesByProjectAndDates(@PathVariable String project
             , @PathVariable String startDateStr, @PathVariable String  endDateStr) {
-        LocalDate startDate = LocalDate.parse(startDateStr, formatter);
-        LocalDate endDate = LocalDate.parse(endDateStr, formatter);
+        LocalDate startDate = LocalDate.parse(startDateStr, formatterImages);
+        LocalDate endDate = LocalDate.parse(endDateStr, formatterImages);
         boolean allProjects = false;
 
         if(project.equals("alle")) {
