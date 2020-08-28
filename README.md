@@ -16,6 +16,7 @@ Das Projekt besteht aus drei Anwendungen:
 * Erstellung einer einfachen und übersichtliche Präsentation der Daten
 * Implementierung einer individuelle Analyse in der Weboberfläche um die Fähigkeiten zu verbessern
 * Bereitstellen von verschiedenen Präsentationsarten: Charts, Tabellen, Report, Mobile Applikation
+* Anbinden einer Versionsverwaltung um genauere Hilfestellungen zu liefern
 
 ## Installation
 __Vorraussetzungen__  
@@ -46,6 +47,8 @@ In der Weboberfläche kann nun nach Projekt und Datumsbereich gefiltert werden.
 * Maven - Build Tool und Entwicklung der Plugins 
 * HTML/JS/CSS - Benutzeroberfläche
 * GIT - Sourcecodeverwaltung
+## Ergebnisse
+Die Ergebnisse der Implementierung, die Evaluierung anhand der Testpersonen und die Vergleiche zu herkömmlichen Lösungen zeigen, dass die Ergebnisse der StatischenCode Analyse auf verschiedene Weise aufbereitet und angezeigt werden können, um den Code der Entwicklerinnen und Entwickler nachhaltig zu verbessern. Teamfunktionalitäten wie Kommentare, Git-Integration, Erstellung von Teams unterstützen die Applikation. Die Github-Integration ermöglicht eine genauere Anzeige für die Entwicklerin oder den Entwickler. 
 ## Weitere Möglichkeiten
 * Einladen der Projektmitglieder mit Mails
 * Fokussierung auf bestimmte Code Qualität-Faktoren um die Weboberfläche genauer und hilfreicher zu gestalten 
