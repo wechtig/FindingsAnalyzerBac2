@@ -3,7 +3,7 @@ __Year:__ 2020
 
 ## Ausgangssituation und Idee
 Um die Code Qualität in Projekten zu steigern, können Hilfen wie die Statische Code Analyse eingesetzt werden. Diese fokussiert aber eine Verbesserung der Fehler und nicht eine langfristige Verbesserung der Entwicklerinnen oder Entwickler. 
-Daher werden die Ergebnisse der Statischen Code Analyse in eine Datenbank importiert und dort langfristig gespeichert. In der Weboberfläche können genauere und verschiedene Präsentationen der Fehler eingesehen werden.
+Daher werden die Ergebnisse der Statischen Code Analyse in eine Datenbank importiert und dort langfristig gespeichert. In der Weboberfläche können dadurch genauere und verschiedene Präsentationen der Fehler erstellt werden. 
 
 ## Übersicht
 Das Projekt besteht aus drei Anwendungen:
@@ -17,6 +17,7 @@ Das Projekt besteht aus drei Anwendungen:
 * Implementierung einer individuelle Analyse in der Weboberfläche um die Fähigkeiten zu verbessern
 * Bereitstellen von verschiedenen Präsentationsarten: Charts, Tabellen, Report, Mobile Applikation
 * Anbinden einer Versionsverwaltung um genauere Hilfestellungen zu liefern
+* Unterstützung von Teams
 
 ## Installation
 __Vorraussetzungen__  
