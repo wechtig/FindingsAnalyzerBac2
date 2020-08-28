@@ -7,9 +7,9 @@ Daher werden die Ergebnisse der Statischen Code Analyse in eine Datenbank import
 
 ## Übersicht
 Das Projekt besteht aus drei Anwendungen:
-Importer: Maven-Plugin um die Ergebnisse der Statischen Code Analyse in der Datenbank zu speichern: https://github.com/wechtig/FindingsAnalyzerDBImporter
-FindingsAnalyzerBac2: Weboberfläche und Backend für die Analyse und Anzeige
-FindingsApp: Android-App für die Anzeige: https://github.com/wechtig/FindingsAppB2
+* Importer: Maven-Plugin um die Ergebnisse der Statischen Code Analyse in der Datenbank zu speichern: https://github.com/wechtig/FindingsAnalyzerDBImporter
+* FindingsAnalyzerBac2: Weboberfläche und Backend für die Analyse und Anzeige
+* FindingsApp: Android-App für die Anzeige: https://github.com/wechtig/FindingsAppB2
 
 ## Ziele
 * Individuelle Angabe der verwendeten Plugins für die Statische Code Analyse 
