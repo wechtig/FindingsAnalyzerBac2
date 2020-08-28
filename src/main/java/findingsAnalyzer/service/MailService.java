@@ -19,7 +19,7 @@ import java.util.Properties;
 
 public class MailService {
 
-    private final static String EMAIL_CLIENT = "findingsbac@gmail.com";
+    private final static String EMAIL_ADDRESS = "findingsbac@gmail.com";
     private final static String PASSWORD = "findingsbac_!";
 
     public void sendMail(ProjectConfig projectConfig, byte[] pdfExport, LocalDate startDate, LocalDate endDate) {
@@ -32,7 +32,7 @@ public class MailService {
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(EMAIL_CLIENT, PASSWORD);
+                        return new PasswordAuthentication(EMAIL_ADDRESS, PASSWORD);
                     }
                 });
 
@@ -40,21 +40,11 @@ public class MailService {
 
         for (User user : projectConfig.getUsers()) {
             try {
-                message.setFrom(new InternetAddress(EMAIL_CLIENT));
+                message.setFrom(new InternetAddress(EMAIL_ADDRESS));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail()));
                 message.setSubject("Report for " + projectConfig.getName());
                 message.setText("This is a generated report for the project " + projectConfig.getName() + "." +
                         " The data is collect between " + startDate.toString() + " and " + endDate.toString()+".");
-
-                /*MimeBodyPart att = new MimeBodyPart();
-                ByteArrayDataSource bds = new ByteArrayDataSource(pdfExport, "AttName");
-                att.setDataHandler(new DataHandler(bds));
-                att.setFileName(bds.getName());
-                Multipart multipart = new MimeMultipart( "alternative" );
-                multipart.addBodyPart(att);
-                att.setContent();*/
-
-
 
                 Multipart multipart = new MimeMultipart( "alternative" );
                 MimeBodyPart attachment = new MimeBodyPart();

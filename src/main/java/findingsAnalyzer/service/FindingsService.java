@@ -57,7 +57,25 @@ public class FindingsService {
         DistinctIterable<String> cursor = collection.distinct("project", String.class);
         Iterator it = cursor.iterator();
 
-        return getStringDataFromQuery(it);
+        List<String> allProjects = getStringDataFromQuery(it);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<String> allowedProjects = getStringDataFromQuery(it);
+
+        for(String project : allProjects) {
+            ProjectConfig projectConfig = configurationService.findConfigByProjectname(project);
+            if(projectConfig == null || projectConfig.getUsers() == null) {
+                continue;
+            }
+
+            for(findingsAnalyzer.data.User projectUser : projectConfig.getUsers()) {
+                if(projectUser.getEmail().equals(user.getUsername())) {
+                    allowedProjects.add(project);
+                }
+            }
+
+        }
+
+        return allowedProjects;
     }
 
     public List<Finding> getFindingsByProjectAndDate(String projectName, LocalDate startDate, LocalDate endDate, boolean allProjects) {
@@ -253,7 +271,6 @@ public class FindingsService {
                 } catch (JsonProcessingException e) {
                     e.printStackTrace();
                 }
-
             }
 
             List<String> changedJavaFiles = new ArrayList<>();

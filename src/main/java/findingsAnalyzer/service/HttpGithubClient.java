@@ -20,10 +20,8 @@ public class HttpGithubClient {
                 .uri(URI.create(url))
                 .setHeader("User-Agent", "Java 11 HttpClient Bot")
                 .build();
-
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.body());
             return response.body();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -31,7 +29,6 @@ public class HttpGithubClient {
             e.printStackTrace();
         }
         return null;
-
     }
 
 }

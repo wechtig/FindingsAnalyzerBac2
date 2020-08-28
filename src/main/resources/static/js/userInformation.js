@@ -9,22 +9,35 @@ function loadUserInformation() {
     var params = project+"/"+startDate+"/"+endDate;
     var requestUrl = "http://localhost:8084/findings/user/"+params;
     var findings = [];
+    var packages = [];
 
     findingsRequest.open("GET",requestUrl);
     findingsRequest.onload = function () {
         if (findingsRequest.status >= 200 && findingsRequest.status < 300) {
             var json_data = JSON.parse(findingsRequest.response);
+
             var result = [];
 
-            for (var i in json_data)
+            for(var i in json_data)
                 result.push([i, json_data [i]]);
 
-            result.forEach(function (entry) {
+            result.forEach(function(entry) {
                 var findingObj = entry[1];
                 findings.push(findingObj);
+                packages.push(findingObj["file"]);
             });
-            setTableDataUser(findings);
 
+            var configRequest = new XMLHttpRequest();
+            var requestUrl = "http://localhost:8084/config/projects";
+            var configurations =   [];
+            configRequest.open("GET",requestUrl);
+            configRequest.onload = function () {
+                if (configRequest.status >= 200 && configRequest.status < 300) {
+                    var json_data = JSON.parse(configRequest.response);
+                    configurations = json_data;
+                    setTableData(findings, configurations);
+                }
+            };
            /* var configRequest = new XMLHttpRequest();
             var requestUrl = "http://localhost:8084/config/projects";
             var configurations =   [];
@@ -76,8 +89,25 @@ function setTableDataUser(findings) {
 }
 
 function getLineFieldByProjectConfig(pathFile, project, line) {
-    return line;
-}
+    var lineField = "";
+    config.forEach(function (entry) {
+        if(entry["name"] == project) {
+            var githubPath = pathFile.split(project+"\\");
+            var fullPath = "";
+            for(var i = 1; i < githubPath.length; i++) {
+                fullPath += githubPath[i];
+            }
+
+            var link = entry["vcsRepositoryLink"] + "/blob/master/"+fullPath+"#L"+line;
+            lineField = "<a href='"+link+"' target='_blank'>"+line+"</a>";
+        }
+    });
+
+    if(lineField != "") {
+        return lineField;
+    }
+
+    return line;}
 
 function getRecommendationForMessage(finding) {
     return "<td>" + finding["message"] + "</td>";
