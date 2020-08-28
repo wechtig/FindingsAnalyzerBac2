@@ -52,6 +52,7 @@ In der Weboberfläche kann nun nach Projekt und Datumsbereich gefiltert werden.
 * Gitanalyse auf Code-Snippets ausweiten (Aktuell Gitanalyse für Klassen) 
 * Mögliche Übersetzung der Applikation in mehrere Sprachen.
 * Automatische Auswertung der Logs (z.B.: Logstash)
+* Implementierung eines Punktesystems, bei Lösen von Fehlern oder Bugs um die Motivation und die Code Qualität zu steigern
 
 [architecture]: https://github.com/wechtig/FindingsAnalyzerBac2/blob/master/architecture.PNG "Architektur"
 [table]: https://github.com/wechtig/FindingsAnalyzerBac2/blob/master/table.PNG "Architektur"
