@@ -29,7 +29,7 @@ __Setup__
 2. Collections in der MongoDB Datenbank anlegen 
 3. Einsatz von Statischen Code Analyse-Plugins und des Importer-Plugins im zu analysierten Code. Dadurch werden die Daten in die Datenbank importiert
     Beispiele Statischen Code Analyse-Plugins: https://maven.apache.org/plugins/maven-checkstyle-plugin/, https://maven.apache.org/plugins/maven-pmd-plugin/
-4. Um die Sicherheit im Projekt zu gewährleisten, muss ein Administrator (Entwickler) für jedes Projekt einen eigenen Team-Administrator in der Datenbank oder über die Weboberfläche anlegen. Ein Team-Administrator kann andere registrierte User zum Projekt hinzufügen. (Dieser Admin ist der default-User einer neuen Projektkonfiguration, wenn der DB-Importer das erste Mal die Daten eines neuen Projekts in die Datenbank importiert )
+4. Um die Sicherheit im Projekt zu gewährleisten, muss ein Administrator (Entwickler) für jedes Projekt einen eigenen Team-Administrator in der Datenbank oder über die Weboberfläche anlegen. Ein Team-Administrator kann andere registrierte User zum Projekt hinzufügen. (Dieser Admin ist der default-User einer neuen Projektkonfiguration, wenn der DB-Importer das erste Mal die Daten eines neuen Projekts in die Datenbank importiert. Admin-Mail: admin@admin.at; Admin-Username: admin)
 
 __Starten__
 1. FindingsAnalyzerBac2 starten: \src\main\java\findingsAnalyzer\FindingsAnalyzerBac2Application.java oder in der Console: mvn spring-boot:run
