@@ -47,11 +47,11 @@ In der Weboberfläche kann nun nach Projekt und Datumsbereich gefiltert werden.
 * HTML/JS/CSS - Benutzeroberfläche
 * GIT - Sourcecodeverwaltung
 ## Weitere Möglichkeiten
-* Einladen der Projektmitglieder mit Mails.
+* Einladen der Projektmitglieder mit Mails
+* Fokussierung auf bestimmte Code Qualität-Faktoren um die Weboberfläche genauer und hilfreicher zu gestalten 
 * Gitanalyse auf Code-Snippets ausweiten (Aktuell Gitanalyse für Klassen) 
 * Mögliche Übersetzung der Applikation in mehrere Sprachen.
 * Automatische Auswertung der Logs (z.B.: Logstash)
-
 
 [architecture]: https://github.com/wechtig/FindingsAnalyzerBac2/blob/master/architecture.PNG "Architektur"
 [table]: https://github.com/wechtig/FindingsAnalyzerBac2/blob/master/table.PNG "Architektur"
