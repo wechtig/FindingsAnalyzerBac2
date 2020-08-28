@@ -48,6 +48,7 @@ In der Weboberfläche kann nun nach Projekt und Datumsbereich gefiltert werden.
 * Maven - Build Tool und Entwicklung der Plugins 
 * HTML/JS/CSS - Benutzeroberfläche
 * GIT - Sourcecodeverwaltung
+* Spring Security - User Verwaltung
 ## Ergebnisse und Fazit
 Die Ergebnisse der Implementierung, die Evaluierung anhand der Testpersonen und die Vergleiche zu herkömmlichen Lösungen zeigen, dass die Ergebnisse der StatischenCode Analyse auf verschiedene Weise aufbereitet und angezeigt werden können, um den Code der Entwicklerinnen und Entwickler nachhaltig zu verbessern. Teamfunktionalitäten wie Kommentare, Git-Integration, Erstellung von Teams unterstützen die Applikation. Die Github-Integration ermöglicht eine genauere Anzeige für die Entwicklerin oder den Entwickler. 
 ## Weitere Möglichkeiten
