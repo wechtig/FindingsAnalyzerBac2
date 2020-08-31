@@ -34,8 +34,6 @@ function sendReport() {
     };
 
     findingsRequest.send();
-
-
 }
 
 function sendReportWithoutFindings(findings) {
@@ -141,6 +139,45 @@ function generateChart2(findings) {
 
     var image2 = document.getElementById("chartClasses").toDataURL("image/jpg");
     return image2;
+}
+
+function sendReportToMail() {
+    var e = document.getElementById("reportProjects");
+    var project = e.options[e.selectedIndex].value;
+    var reportMail = document.getElementById("reportMail").value;
+    var startDate = document.getElementById("start").value;
+    var endDate = document.getElementById("end").value;
+    var printFindings = document.getElementById("includeFindings").checked;
+
+    var findingsRequest = new XMLHttpRequest();
+    var params = project+"/"+startDate+"/"+endDate;
+    var requestUrl = "http://localhost:8084/findings/"+params;
+    var findings = [];
+
+    findingsRequest.open("GET",requestUrl);
+    findingsRequest.onload = function () {
+        if (findingsRequest.status >= 200 && findingsRequest.status < 300) {
+            var json_data = JSON.parse(findingsRequest.response);
+            var result = [];
+
+            for (var i in json_data)
+                result.push([i, json_data [i]]);
+
+            result.forEach(function (entry) {
+                var findingObj = entry[1];
+                findings.push(findingObj);
+            });
+
+            if(!printFindings) {
+                sendReportWithoutFindingsToMail(findings, reportMail);
+            } else if(printFindings) {
+                sendReportWithFindingsToMail(findings, reportMail);
+            }
+
+        }
+    };
+
+    findingsRequest.send();
 }
 
 function generateChart3(findings) {
@@ -307,4 +344,62 @@ function getErrorsPerProject(project, findings) {
     }
 
     return errors;
+}
+
+
+function sendReportWithoutFindingsToMail(findings, mail) {
+    generateChart1(findings);
+    generateChart2(findings);
+    generateChart3(findings);
+    var e = document.getElementById("reportProjects");
+    var project = e.options[e.selectedIndex].value;
+    var startDate = document.getElementById("start").value;
+    var endDate = document.getElementById("end").value;
+    var printFindings = document.getElementById("includeFindings").value;
+    setTimeout(function(){
+        var chart1 = document.getElementById("lineChart").toDataURL("image/jpg");
+        var chart2 = document.getElementById("chartClasses").toDataURL("image/jpg");
+        var chart3 = document.getElementById("pieChart").toDataURL("image/jpg");
+
+        var chartData = project+ "&&" +startDate+ "&&" +endDate + "&&" + chart1 + "&&" +  chart2 + "&&" + chart3  + "&&" + mail;
+
+        fetch('http://localhost:8084/reports/chart/findings/false/mail', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body:chartData,
+        }).then(function (data) {
+            console.log('Request success: ', data);
+        }).catch(function (error) {
+            console.log('Request failure: ', error);
+        });
+
+    },1000);
+
+}
+
+function sendReportWithFindingsToMail(findings, mail) {
+    var chart1 = generateChart1(findings);
+    var chart2 = generateChart2(findings);
+    var chart3 = generateChart3(findings);
+    var e = document.getElementById("reportProjects");
+    var project = e.options[e.selectedIndex].value;
+    var startDate = document.getElementById("start").value;
+    var endDate = document.getElementById("end").value;
+    var printFindings = document.getElementById("includeFindings").value;
+
+    var chartData = project+ "&&" +startDate+ "&&" +endDate + "&&" + chart1 + "&&" +  chart2 + "&&" + chart3 + "&&" + mail;
+
+    fetch('http://localhost:8084/reports/chart/findings/true/mail', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body:chartData,
+    }).then(function (data) {
+        console.log('Request success: ', data);
+    }).catch(function (error) {
+        console.log('Request failure: ', error);
+    });
 }

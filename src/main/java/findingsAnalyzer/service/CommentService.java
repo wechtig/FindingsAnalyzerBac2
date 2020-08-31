@@ -26,12 +26,10 @@ public class CommentService {
     private MongoDatabase db;
     private MongoCollection<Document> collection;
     private FindingsService findingsService;
-    private HttpGithubClient httpGithubClient;
     private UserService userService;
 
     public CommentService() {
         connect();
-        httpGithubClient = new HttpGithubClient();
         userService = new UserService();
         findingsService = new FindingsService();
     }
