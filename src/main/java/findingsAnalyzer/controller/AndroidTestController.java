@@ -20,7 +20,7 @@ public class AndroidTestController {
 
     @GetMapping("/android/projects")
     public List<String> getProjectNames() {
-        return findingsService.getProjects();
+        return findingsService.getProjectsAndroid();
     }
 
     @GetMapping("/android/findings/{project}/{startDateStr}/{endDateStr}")

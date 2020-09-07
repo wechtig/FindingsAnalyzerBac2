@@ -51,6 +51,16 @@ public class FindingsService {
         ignoreMessageService = new IgnoreMessageService();
     }
 
+    public List<String> getProjectsAndroid() {
+        BasicDBObject field = new BasicDBObject("project", "1");
+        BasicDBObject id = new BasicDBObject("project", "1");
+        DistinctIterable<String> cursor = collection.distinct("project", String.class);
+        Iterator it = cursor.iterator();
+
+        return getStringDataFromQuery(it);
+    }
+
+
     public List<String> getProjects() {
         BasicDBObject field = new BasicDBObject("project", "1");
         BasicDBObject id = new BasicDBObject("project", "1");
