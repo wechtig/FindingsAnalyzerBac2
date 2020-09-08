@@ -40,7 +40,7 @@ __Starten__
 
 ![Chart-Bild](./chart.PNG)
 ## Architektur
-![Architektur-Bild][./architecture.PNG]
+![Architektur-Bild](./architecture.PNG)
 ## Technologien
 * Spring Boot - Java Applikationen
 * MongoDB - NoSQL Datenbank
