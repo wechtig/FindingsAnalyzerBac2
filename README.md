@@ -7,9 +7,9 @@ Daher werden die Ergebnisse der Statischen Code Analyse in eine Datenbank import
 
 ## Übersicht
 Das Projekt besteht aus drei Anwendungen:
-* Importer: Maven-Plugin um die Ergebnisse der Statischen Code Analyse in der Datenbank zu speichern: https://github.com/wechtig/FindingsAnalyzerDBImporter
+* [Importer](https://github.com/wechtig/FindingsAnalyzerDBImporter): Maven-Plugin um die Ergebnisse der Statischen Code Analyse in der Datenbank zu speichern: https://github.com/wechtig/FindingsAnalyzerDBImporter
 * FindingsAnalyzerBac2: Weboberfläche und Backend für die Analyse und Anzeige
-* FindingsApp: Android-App für die Anzeige: https://github.com/wechtig/FindingsAppB2
+* [FindingsApp: Android-App für die Anzeige](https://github.com/wechtig/FindingsAppB2)
 
 ## Ziele
 * Individuelle Angabe der verwendeten Plugins für die Statische Code Analyse 
@@ -32,7 +32,7 @@ __Setup__
 4. Um die Sicherheit im Projekt zu gewährleisten, muss ein Administrator (Entwickler) für jedes Projekt einen eigenen Team-Administrator in der Datenbank oder über die Weboberfläche anlegen. Ein Team-Administrator kann andere registrierte User zum Projekt hinzufügen. (Dieser Admin ist der default-User einer neuen Projektkonfiguration, wenn der DB-Importer das erste Mal die Daten eines neuen Projekts in die Datenbank importiert. Admin-Mail: admin@admin.at; Admin-Username: admin. Soll eine andere Email-Adresse des Admins verwendet werden, so muss dies im Importer angepasst werden.)
 
 __Starten__
-1. FindingsAnalyzerBac2 starten: \src\main\java\findingsAnalyzer\FindingsAnalyzerBac2Application.java oder in der Console: mvn spring-boot:run
+1. FindingsAnalyzerBac2 starten: ```\src\main\java\findingsAnalyzer\FindingsAnalyzerBac2Application.java oder in der Console: mvn spring-boot:run
 2. In der Weboberfläche kann nun nach Projekt und Datumsbereich gefiltert und die Information angezeigt werden.  
 
 ## Screenshots
