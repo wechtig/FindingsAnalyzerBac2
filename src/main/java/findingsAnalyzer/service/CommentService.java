@@ -9,8 +9,9 @@ import com.mongodb.client.MongoDatabase;
 import findingsAnalyzer.converter.DBObjectConverter;
 import findingsAnalyzer.data.Comment;
 import findingsAnalyzer.data.Finding;
-import findingsAnalyzer.data.User;
 import org.bson.Document;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -50,9 +51,12 @@ public class CommentService {
     }
 
     public void saveComment(Finding finding, String text) {
+        org.springframework.security.core.userdetails.User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        findingsAnalyzer.data.User user = userService.findByEmail(loggedInUser.getUsername());
+
         Comment comment = new Comment();
         comment.setFindingId(finding.getId());
-        comment.setText(text);
+        comment.setText(user.getFullname() + ":" + text);
         collection.insertOne(DBObjectConverter.convertCommentToDocument(comment));
 
     }

@@ -227,28 +227,32 @@ public class FindingsService {
         List<String> changedFilesByUser = new ArrayList<>();
         if(projectConfig.getVcsRepositoryLink() != null) {
             String projectPaths[] = projectConfig.getVcsRepositoryLink().split("/");
-            String userPath = projectPaths[projectPaths.length-2];
-            String repoName = projectPaths[projectPaths.length-1];
+            String userPath = projectPaths[projectPaths.length - 2];
+            String repoName = projectPaths[projectPaths.length - 1];
 
-            String githubLink = "https://api.github.com/repos/"+userPath+"/"+repoName+"/commits?since="+startDate+"&until="+endDate;
+            String githubLink = "https://api.github.com/repos/" + userPath + "/" + repoName + "/commits?since=" + startDate + "&until=" + endDate;
             String data = httpGithubClient.get(githubLink);
 
-            if(data == null) {
+            if (data == null) {
                 return new ArrayList<>();
             }
 
             List<String> commitLinks = new ArrayList<>();
             try {
                 List<Map<String, String>> response = new ObjectMapper().readValue(data, List.class);
-                for(Map<String, String> commitArray : response) {
+                for (Map<String, String> commitArray : response) {
+
+                    // todo get author from commit!!!
+                    Object commit = commitArray.get("commit");
+                    Object commitAuthor = ((LinkedHashMap) commit).get("author");
+                    String mail = (String) ((LinkedHashMap) commitAuthor).get("email");
                     Object author = commitArray.get("author");
 
-                    if(author == null) {
+                    if (author == null) {
                         continue;
                     }
 
-                    String name = (String) ((LinkedHashMap) author).get("login");
-                    if(!user.getFullname().equals(name)) {
+                    if (!user.getEmail().equals(mail)) {
                         continue;
                     }
 
@@ -262,18 +266,18 @@ public class FindingsService {
             List<String> files = new ArrayList<>();
             for (String commit : commitLinks) {
                 String commitData = httpGithubClient.get(commit);
-                if(data == null) {
+                if (data == null) {
                     return new ArrayList<>();
                 }
                 try {
                     Map<String, List<Object>> commitResponse = new ObjectMapper().readValue(commitData, Map.class);
                     List<Object> changedFiles = commitResponse.get("files");
 
-                    if(changedFiles == null) {
+                    if (changedFiles == null) {
                         continue;
                     }
 
-                    for(Object o : changedFiles)  {
+                    for (Object o : changedFiles) {
                         String filename = (String) ((LinkedHashMap) o).get("filename");
                         files.add(filename);
                     }
@@ -284,39 +288,42 @@ public class FindingsService {
             }
 
             List<String> changedJavaFiles = new ArrayList<>();
-            for(String changedFile : files) {
-                if(changedFile.contains(".java")) {
+            for (String changedFile : files) {
+                if (changedFile.contains(".java")) {
                     int idx = changedFile.lastIndexOf("/");
-                    String filename = idx >= 0 ? changedFile.substring(idx + 1) : changedFile;;
-                    changedJavaFiles.add(filename.replace(".java",""));
+                    String filename = idx >= 0 ? changedFile.substring(idx + 1) : changedFile;
+                    ;
+                    changedJavaFiles.add(filename.replace(".java", ""));
                 }
             }
-            changedFilesByUser = files.stream().distinct().collect(Collectors.toList());
+            changedFilesByUser = changedJavaFiles.stream().distinct().collect(Collectors.toList());
 
-        }
-        boolean allowed = false;
+            boolean allowed = false;
 
-        for(findingsAnalyzer.data.User projectUser : projectConfig.getUsers()) {
-            if(projectUser.getEmail().equals(loggedInUser.getUsername())) {
-                allowed = true;
+            for (findingsAnalyzer.data.User projectUser : projectConfig.getUsers()) {
+                if (projectUser.getEmail().equals(loggedInUser.getUsername())) {
+                    allowed = true;
+                }
             }
+            if (!allowed) {
+                return new ArrayList<>();
+            }
+
+            BasicDBObject dateRange = new BasicDBObject("$gte", startDate);
+            dateRange.put("$lt", endDate);
+
+            BasicDBObject query = new BasicDBObject("date", dateRange);
+
+            FindIterable<Document> cursor = collection.find(query);
+            Iterator it = cursor.iterator();
+
+            List<Finding> findings = getCheckstyleDataFromQuery(it);
+            findings = findings.stream().filter(c -> c.getProject().equals(project)).collect(Collectors.toList());
+            List<Finding> filteredFindings = getFindingsWithoutIgnoredAndUserFiltered(findings, changedFilesByUser);
+
+            return filteredFindings;
         }
-        if(!allowed) {
-            return new ArrayList<>();
-        }
-
-        BasicDBObject dateRange = new BasicDBObject ("$gte", startDate);
-        dateRange.put("$lt", endDate);
-
-        BasicDBObject query = new BasicDBObject("date", dateRange);
-
-        FindIterable<Document> cursor = collection.find(query);
-        Iterator it = cursor.iterator();
-
-        List<Finding> findings = getCheckstyleDataFromQuery(it);
-        List<Finding> filteredFindings = getFindingsWithoutIgnoredAndUserFiltered(findings, changedFilesByUser);
-
-        return filteredFindings;
+        return new ArrayList<>();
     }
 
     private List<Finding> getFindingsWithoutIgnoredAndUserFiltered(List<Finding> findings, List<String> changedFilesByUser) {
@@ -329,7 +336,7 @@ public class FindingsService {
 
         for(Finding finding : findings) {
             boolean isIgnored = false;
-            boolean isNotChanged = false;
+            boolean isChanged = false;
             for (String message : ignoredMessages) {
                 if(finding.getMessage().contains(message)) {
                     isIgnored = true;
@@ -337,12 +344,12 @@ public class FindingsService {
 
                 for (String file : changedFilesByUser) {
                     if(finding.getFile().equals(file)) {
-                        isNotChanged = true;
+                        isChanged = true;
                     }
                 }
             }
 
-            if(isIgnored == false && isNotChanged == false) {
+            if(isIgnored == false && isChanged) {
                 filtered.add(finding);
             }
         }

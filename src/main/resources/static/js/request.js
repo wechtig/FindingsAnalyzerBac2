@@ -384,10 +384,11 @@ function viewComments(finding) {
         .then(data => {
             data.forEach(function (entry) {
                 var text = entry["text"];
-                commentText += text;
+                var textLine = "<p>" + text + "</p>";
+                commentText += textLine;
             });
 
-            $(".modal-body #daten").html("<p>"+commentText+"</p>");
+            $(".modal-body #daten").html(commentText);
 
         });
 
