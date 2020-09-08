@@ -36,8 +36,9 @@ __Starten__
 2. In der Weboberfläche kann nun nach Projekt und Datumsbereich gefiltert und die Information angezeigt werden.  
 
 ## Screenshots
-![Tabelle-Bild][table]
-![Chart-Bild][chart]
+![Tabelle-Bild](./table.png)
+
+![Chart-Bild](./chart.png)
 ## Architektur
 ![Architektur-Bild][architecture]
 ## Technologien
