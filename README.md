@@ -40,7 +40,7 @@ __Starten__
 
 ![Chart-Bild](./chart.PNG)
 ## Architektur
-![Architektur-Bild][architecture]
+![Architektur-Bild][./architecture.PNG]
 ## Technologien
 * Spring Boot - Java Applikationen
 * MongoDB - NoSQL Datenbank
@@ -58,10 +58,6 @@ Die Ergebnisse der Implementierung, die Evaluierung anhand der Testpersonen und 
 * Mögliche Übersetzung der Applikation in mehrere Sprachen.
 * Automatische Auswertung der Logs (z.B.: Logstash)
 * Implementierung eines Punktesystems, bei Lösen von Fehlern oder Bugs um die Motivation und die Code Qualität zu steigern
-
-[architecture]: https://github.com/wechtig/FindingsAnalyzerBac2/blob/master/architecture.PNG "Architektur"
-[table]: https://github.com/wechtig/FindingsAnalyzerBac2/blob/master/table.PNG "Architektur"
-[chart]: https://github.com/wechtig/FindingsAnalyzerBac2/blob/master/chart.PNG "Architektur"
 
 
 
