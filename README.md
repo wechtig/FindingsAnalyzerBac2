@@ -21,14 +21,14 @@ Das Projekt besteht aus drei Anwendungen:
 
 ## Installation
 __Vorraussetzungen__  
-1. Apache Maven: https://maven.apache.org/download.cgi  
+1. [Apache Maven](https://maven.apache.org/download.cgi )
 2. MongoDB-Datenbank
     
 __Setup__  
 1. Den Sourcecode als .zip oder über GIT herunterladen
 2. Collections in der MongoDB Datenbank anlegen 
 3. Einsatz von Statischen Code Analyse-Plugins und des Importer-Plugins im zu analysierten Code. Dadurch werden die Daten in die Datenbank importiert
-    Beispiele Statischen Code Analyse-Plugins: https://maven.apache.org/plugins/maven-checkstyle-plugin/, https://maven.apache.org/plugins/maven-pmd-plugin/
+    Beispiele Statischen Code Analyse-Plugins: [Checkstyle](https://maven.apache.org/plugins/maven-checkstyle-plugin/) oder [PMD](https://maven.apache.org/plugins/maven-pmd-plugin/)
 4. Um die Sicherheit im Projekt zu gewährleisten, muss ein Administrator (Entwickler) für jedes Projekt einen eigenen Team-Administrator in der Datenbank oder über die Weboberfläche anlegen. Ein Team-Administrator kann andere registrierte User zum Projekt hinzufügen. (Dieser Admin ist der default-User einer neuen Projektkonfiguration, wenn der DB-Importer das erste Mal die Daten eines neuen Projekts in die Datenbank importiert. Admin-Mail: admin@admin.at; Admin-Username: admin. Soll eine andere Email-Adresse des Admins verwendet werden, so muss dies im Importer angepasst werden.)
 
 __Starten__
